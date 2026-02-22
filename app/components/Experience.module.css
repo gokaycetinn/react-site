@@ -1,0 +1,219 @@
+.experience {
+    padding: 100px 0;
+    background: var(--bg-darker);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-light);
+    margin-bottom: 16px;
+}
+
+.title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+}
+
+/* Timeline (desktop) */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timelineLine {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary, #1d4ed8), transparent);
+}
+
+.timelineItem {
+    position: relative;
+    padding-left: 80px;
+    padding-bottom: 48px;
+}
+
+.timelineItem:last-child {
+    padding-bottom: 0;
+}
+
+.marker {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--bg-dark);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.markerCurrent {
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.markerPulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.3s ease;
+}
+
+.content:hover {
+    border-color: var(--primary);
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--gradient-1);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.date {
+    font-size: 14px;
+    color: var(--primary-light);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.content h3,
+.mobileCard h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.content h4,
+.mobileCard h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.content p,
+.mobileCard p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.location {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.detailsList {
+    margin: 0 0 16px;
+    padding-left: 18px;
+    color: var(--text-secondary);
+}
+
+.detailsList li {
+    margin-bottom: 8px;
+    line-height: 1.55;
+    font-size: 13px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    padding: 4px 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary-light);
+    cursor: default;
+}
+
+/* Mobile horizontal scroll (hidden on desktop) */
+.mobileScroll {
+    display: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .experience {
+        padding: 60px 0;
+    }
+
+    .header {
+        margin-bottom: 32px;
+    }
+
+    /* Hide desktop timeline on mobile */
+    .timeline {
+        display: none;
+    }
+
+    /* Show mobile horizontal scroll */
+    .mobileScroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+        scrollbar-width: none;
+    }
+
+    .mobileScroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mobileCard {
+        flex-shrink: 0;
+        width: 300px;
+        scroll-snap-align: start;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 24px;
+    }
+}

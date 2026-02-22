@@ -1,0 +1,258 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 80px;
+}
+
+.particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--primary-light);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.textSection {
+    max-width: 700px;
+}
+
+.greeting {
+    font-size: 18px;
+    color: var(--primary-light);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.name {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.nameLine {
+    display: inline;
+    color: var(--text-primary);
+}
+
+.nameGradient {
+    display: inline;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.titleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.titleStatic {
+    color: var(--text-secondary);
+}
+
+.titleDynamic {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.cursor {
+    color: var(--primary-light);
+    font-weight: 300;
+    margin-left: -4px;
+}
+
+.description {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 500px;
+}
+
+.buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.btnPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--gradient-1);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btnPrimary:hover {
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.btnSecondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+    background: var(--bg-card);
+    border-color: var(--primary);
+}
+
+.social {
+    display: flex;
+    gap: 16px;
+}
+
+.socialLink {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+    background: var(--gradient-1);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-4px);
+}
+
+.scrollIndicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    z-index: 2;
+}
+
+.scrollDot {
+    width: 4px;
+    height: 4px;
+    background: var(--primary-light);
+    border-radius: 50%;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+
+    .content {
+        padding: 0 16px;
+    }
+
+    .greeting {
+        font-size: 15px;
+    }
+
+    .name {
+        font-size: clamp(28px, 8vw, 48px);
+        margin-bottom: 16px;
+    }
+
+    .titleWrapper {
+        font-size: 14px;
+        margin-bottom: 16px;
+        gap: 6px;
+    }
+
+    .titleDynamic {
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 14px;
+        margin-bottom: 24px;
+        line-height: 1.7;
+    }
+
+    .buttons {
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .btnPrimary,
+    .btnSecondary {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .social {
+        gap: 12px;
+    }
+
+    .socialLink {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .scrollIndicator {
+        bottom: 16px;
+    }
+
+    .particles {
+        display: none;
+    }
+}

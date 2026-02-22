@@ -1,0 +1,134 @@
+.footer {
+    padding: 60px 0 0;
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 32px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.links {
+    display: flex;
+    gap: 24px;
+}
+
+.links a {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: var(--text-primary);
+}
+
+.social {
+    display: flex;
+    gap: 12px;
+}
+
+.socialLink {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+    background: var(--gradient-1);
+    border-color: transparent;
+    color: white;
+}
+
+.bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 24px 0;
+    text-align: center;
+}
+
+.bottom p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 0 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding-bottom: 24px;
+    }
+
+    .brand {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .links a {
+        font-size: 13px;
+    }
+
+    .social {
+        justify-content: center;
+    }
+
+    .bottom {
+        padding: 16px 0;
+    }
+}

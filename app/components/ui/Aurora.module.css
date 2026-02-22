@@ -1,0 +1,87 @@
+.auroraContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.aurora {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.auroraBlob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+
+.blob1 {
+  width: 60%;
+  height: 60%;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle, var(--aurora-stop-1) 0%, transparent 70%);
+  animation: auroraMove1 var(--aurora-speed, 16s) ease-in-out infinite;
+}
+
+.blob2 {
+  width: 50%;
+  height: 50%;
+  bottom: -10%;
+  left: -10%;
+  background: radial-gradient(circle, var(--aurora-stop-2) 0%, transparent 70%);
+  animation: auroraMove2 var(--aurora-speed, 16s) ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.blob3 {
+  width: 45%;
+  height: 45%;
+  top: 30%;
+  left: 30%;
+  background: radial-gradient(circle, var(--aurora-stop-3) 0%, transparent 70%);
+  animation: auroraMove3 var(--aurora-speed, 16s) ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.blob4 {
+  width: 40%;
+  height: 40%;
+  top: 50%;
+  right: 20%;
+  background: radial-gradient(circle, var(--aurora-stop-4) 0%, transparent 70%);
+  animation: auroraMove4 var(--aurora-speed, 16s) ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+@keyframes auroraMove1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-15%, 10%) scale(1.1); }
+  50% { transform: translate(-25%, -5%) scale(0.95); }
+  75% { transform: translate(-10%, 15%) scale(1.05); }
+}
+
+@keyframes auroraMove2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20%, -10%) scale(1.05); }
+  50% { transform: translate(10%, 15%) scale(1.1); }
+  75% { transform: translate(5%, -5%) scale(0.95); }
+}
+
+@keyframes auroraMove3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-10%, -15%) scale(0.95); }
+  50% { transform: translate(15%, 10%) scale(1.1); }
+  75% { transform: translate(-5%, 20%) scale(1.05); }
+}
+
+@keyframes auroraMove4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15%, -10%) scale(1.05); }
+  66% { transform: translate(-10%, 15%) scale(0.95); }
+}
