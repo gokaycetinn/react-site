@@ -89,10 +89,30 @@ const projects = [
 
 export default function Projects() {
     const scrollRef = useRef(null);
+
+    const scrollCards = (direction) => {
+        if (!scrollRef.current) return;
+        const amount = 384;
+        scrollRef.current.scrollBy({
+            left: direction === "left" ? -amount : amount,
+            behavior: "smooth",
+        });
+    };
+
     const { language } = useLanguage();
     const t = language === "en"
-        ? { title: "Featured Projects", all: "View All Projects" }
-        : { title: "Öne Çıkan Projeler", all: "Tüm Projeleri Gör" };
+        ? {
+            title: "Featured Projects",
+            all: "View All Projects",
+            prev: "Previous",
+            next: "Next",
+        }
+        : {
+            title: "Öne Çıkan Projeler",
+            all: "Tüm Projeleri Gör",
+            prev: "Önceki",
+            next: "Sonraki",
+        };
 
     return (
         <section id="projects" className={styles.projects}>
@@ -103,12 +123,31 @@ export default function Projects() {
                     </h2>
                 </div>
 
+                <div className={styles.desktopArrows}>
+                    <button
+                        type="button"
+                        className={styles.arrowBtn}
+                        onClick={() => scrollCards("left")}
+                        aria-label={t.prev}
+                    >
+                        <i className="fas fa-chevron-left"></i>
+                    </button>
+                    <button
+                        type="button"
+                        className={styles.arrowBtn}
+                        onClick={() => scrollCards("right")}
+                        aria-label={t.next}
+                    >
+                        <i className="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
                 <div
                     className={styles.scrollContainer}
                     ref={scrollRef}
                 >
                     {projects.map((project, i) => (
-                        <ScrollReveal key={i} delay={i * 0.1} className={styles.cardWrapper}>
+                        <ScrollReveal key={i} delay={i * 0.1} distance={0} className={styles.cardWrapper}>
                             <SpotlightCard
                                 className={styles.card}
                                 spotlightColor="rgba(59, 130, 246, 0.15)"

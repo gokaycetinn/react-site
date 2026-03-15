@@ -19,6 +19,33 @@
     font-weight: 700;
 }
 
+.desktopArrows {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 26px;
+    margin-bottom: 14px;
+}
+
+.arrowBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.arrowBtn:hover {
+    border-color: var(--primary);
+    color: var(--primary-light);
+}
+
 /* Horizontal scroll container */
 .scrollContainer {
     display: flex;
@@ -232,6 +259,10 @@
 
     .header {
         margin-bottom: 32px;
+    }
+
+    .desktopArrows {
+        display: none;
     }
 
     .scrollContainer {
