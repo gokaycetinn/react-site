@@ -78,21 +78,33 @@
 }
 
 .cardImage {
-    height: 200px;
+    height: 240px;
     position: relative;
     border-radius: 16px 16px 0 0;
     overflow: hidden;
+    background: #0b1220;
+}
+
+.cardImageGallery {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
 }
 
 .cardImg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    transform: scale(1.08);
+    transform-origin: center;
     transition: transform 0.5s ease;
 }
 
 .cardImage:hover .cardImg {
-    transform: scale(1.05);
+    transform: scale(1.14);
 }
 
 /* Video card */
@@ -176,6 +188,7 @@
     line-height: 1.6;
     margin-bottom: 16px;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -202,6 +215,120 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+}
+
+.detailToggle {
+    margin-top: 10px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-darker);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.detailToggle:hover {
+    border-color: var(--primary);
+    color: var(--primary-light);
+}
+
+.imageModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(3, 8, 18, 0.74);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.imageModal {
+    width: min(820px, 92vw);
+    max-height: 82vh;
+    background: rgba(8, 13, 24, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.imageModalClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+}
+
+.imageModalImg {
+    width: 100%;
+    max-height: calc(82vh - 24px);
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.imageModalDots {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.imageModalDot {
+    width: 8px;
+    height: 8px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: width 0.2s ease, background 0.2s ease;
+}
+
+.imageModalDotActive {
+    width: 22px;
+    background: #ffffff;
+}
+
+.imageModalNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(2, 8, 20, 0.65);
+    color: #fff;
+    cursor: pointer;
+}
+
+.imageModalPrev {
+    left: 12px;
+}
+
+.imageModalNext {
+    right: 12px;
 }
 
 .cardBtn {
@@ -276,7 +403,7 @@
     }
 
     .cardImage {
-        height: 160px;
+        height: 190px;
     }
 
     .cardImageVideo {
@@ -293,6 +420,20 @@
 
     .cardContent p {
         font-size: 13px;
+    }
+
+    .imageModalNav {
+        width: 34px;
+        height: 34px;
+    }
+
+    .imageModalDots {
+        gap: 6px;
+        bottom: 10px;
+    }
+
+    .imageModalDotActive {
+        width: 18px;
     }
 
     .ctaBtn {

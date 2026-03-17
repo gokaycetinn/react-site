@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import BlurText from "./ui/BlurText";
 import SpotlightCard from "./ui/SpotlightCard";
@@ -37,18 +37,38 @@ const projects = [
         ],
         image: `${basePath}/images/cnn-based.png`,
     },
-    {
-        title: { tr: "Digital Diary", en: "Digital Diary" },
+     {
+        title: { tr: "Wellness AI", en: "Wellness AI" },
         description: {
-            tr: "Dijital günlük uygulaması. Kullanıcıların günlük notlarını ve düşüncelerini kaydetmelerini sağlayan modern bir uygulama.",
-            en: "A digital diary app. A modern application that allows users to save daily notes and thoughts.",
+            tr: "Firebase AI ve Remote Config aracılığıyla dinamik kişilik profilleri oluşturan, Hive ile yerel sohbet kalıcılığını sağlayan ve Cubit durum yönetimini kullanan, Flutter tabanlı bir yapay zeka koçluk uygulaması.",
+            en: "A Flutter-based AI coaching app featuring dynamic personas via Firebase AI & Remote Config, local chat persistence with Hive, and Cubit state management.",
         },
-        tech: ["Python", "Database"],
+        tech: ["Flutter", "Firebase", "AI"],
         links: [
-            { label: { tr: "GitHub", en: "GitHub" }, href: "https://github.com/gokaycetinn/Digital-Diary", icon: "fab fa-github" },
+            { label: { tr: "GitHub", en: "GitHub" }, href: "https://github.com/gokaycetinn/WellnessAi", icon: "fab fa-github" },
         ],
-        icon: "fas fa-book",
+        images: [
+            `${basePath}/images/Wellness.png`,
+            `${basePath}/images/Dietitian.png`,
+            `${basePath}/images/Fitness.png`,
+            `${basePath}/images/Yoga.png`,
+            `${basePath}/images/Pilates.png`,
+            `${basePath}/images/ChatHistory.png`,
+        ],
     },
+     {
+        title: { tr: "Product Recommendation System", en: "Product Recommendation System" },
+        description: {
+            tr: "Makine öğrenmesi tabanlı ürün öneri sistemi. Kullanıcı davranışlarını analiz ederek kişiselleştirilmiş öneriler sunar.",
+            en: "A machine learning based recommendation engine that analyzes user behavior and provides personalized suggestions.",
+        },
+        tech: ["Python", "ML", "Recommendation"],
+        links: [
+            { label: { tr: "GitHub", en: "GitHub" }, href: "https://github.com/gokaycetinn/Product-Recommendation-System", icon: "fab fa-github" },
+        ],
+        image: `${basePath}/images/web-interface.png`,
+    },
+
     {
         title: { tr: "Data Mining Project", en: "Data Mining Project" },
         description: {
@@ -73,46 +93,61 @@ const projects = [
         ],
         icon: "fas fa-calendar-check",
     },
+   
     {
-        title: { tr: "Product Recommendation System", en: "Product Recommendation System" },
+        title: { tr: "Digital Diary", en: "Digital Diary" },
         description: {
-            tr: "Makine öğrenmesi tabanlı ürün öneri sistemi. Kullanıcı davranışlarını analiz ederek kişiselleştirilmiş öneriler sunar.",
-            en: "A machine learning based recommendation engine that analyzes user behavior and provides personalized suggestions.",
+            tr: "Dijital günlük uygulaması. Kullanıcıların günlük notlarını ve düşüncelerini kaydetmelerini sağlayan modern bir uygulama.",
+            en: "A digital diary app. A modern application that allows users to save daily notes and thoughts.",
         },
-        tech: ["Python", "ML", "Recommendation"],
+        tech: ["Python", "Database"],
         links: [
-            { label: { tr: "GitHub", en: "GitHub" }, href: "https://github.com/gokaycetinn/Product-Recommendation-System", icon: "fab fa-github" },
+            { label: { tr: "GitHub", en: "GitHub" }, href: "https://github.com/gokaycetinn/Digital-Diary", icon: "fab fa-github" },
         ],
-        icon: "fas fa-lightbulb",
+        icon: "fas fa-book",
     },
 ];
 
 export default function Projects() {
     const scrollRef = useRef(null);
-
-    const scrollCards = (direction) => {
-        if (!scrollRef.current) return;
-        const amount = 384;
-        scrollRef.current.scrollBy({
-            left: direction === "left" ? -amount : amount,
-            behavior: "smooth",
-        });
-    };
-
+    const [activeGalleryIndex, setActiveGalleryIndex] = useState(null);
+    const [activeImageIndex, setActiveImageIndex] = useState(0);
     const { language } = useLanguage();
     const t = language === "en"
         ? {
             title: "Featured Projects",
             all: "View All Projects",
-            prev: "Previous",
-            next: "Next",
+            openGallery: "Open Gallery",
+            closePreview: "Close preview",
         }
         : {
             title: "Öne Çıkan Projeler",
             all: "Tüm Projeleri Gör",
-            prev: "Önceki",
-            next: "Sonraki",
+            openGallery: "Galeriyi Aç",
+            closePreview: "Onizlemeyi Kapat",
         };
+
+    const openGallery = (projectIndex) => {
+        setActiveGalleryIndex(projectIndex);
+        setActiveImageIndex(0);
+    };
+
+    const closeGallery = () => {
+        setActiveGalleryIndex(null);
+        setActiveImageIndex(0);
+    };
+
+    const showPrevImage = () => {
+        if (activeGalleryIndex === null) return;
+        const total = projects[activeGalleryIndex].images.length;
+        setActiveImageIndex((prev) => (prev - 1 + total) % total);
+    };
+
+    const showNextImage = () => {
+        if (activeGalleryIndex === null) return;
+        const total = projects[activeGalleryIndex].images.length;
+        setActiveImageIndex((prev) => (prev + 1) % total);
+    };
 
     return (
         <section id="projects" className={styles.projects}>
@@ -123,31 +158,12 @@ export default function Projects() {
                     </h2>
                 </div>
 
-                <div className={styles.desktopArrows}>
-                    <button
-                        type="button"
-                        className={styles.arrowBtn}
-                        onClick={() => scrollCards("left")}
-                        aria-label={t.prev}
-                    >
-                        <i className="fas fa-chevron-left"></i>
-                    </button>
-                    <button
-                        type="button"
-                        className={styles.arrowBtn}
-                        onClick={() => scrollCards("right")}
-                        aria-label={t.next}
-                    >
-                        <i className="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
                 <div
                     className={styles.scrollContainer}
                     ref={scrollRef}
                 >
                     {projects.map((project, i) => (
-                        <ScrollReveal key={i} delay={i * 0.1} distance={0} className={styles.cardWrapper}>
+                        <ScrollReveal key={i} delay={i * 0.1} className={styles.cardWrapper}>
                             <SpotlightCard
                                 className={styles.card}
                                 spotlightColor="rgba(59, 130, 246, 0.15)"
@@ -163,6 +179,17 @@ export default function Projects() {
                                                 playsInline
                                                 className={styles.cardVideo}
                                             />
+                                        ) : project.images?.length ? (
+                                            <div className={styles.cardImageGallery}>
+                                                {project.images.map((imgSrc, imgIndex) => (
+                                                    <img
+                                                        key={imgIndex}
+                                                        src={imgSrc}
+                                                        alt={`${project.title[language] || project.title.tr} ${imgIndex + 1}`}
+                                                        className={styles.cardImg}
+                                                    />
+                                                ))}
+                                            </div>
                                         ) : project.image ? (
                                             <img
                                                 src={project.image}
@@ -210,6 +237,16 @@ export default function Projects() {
                                                 </a>
                                             ))}
                                         </div>
+                                        {project.images?.length ? (
+                                            <button
+                                                type="button"
+                                                className={styles.detailToggle}
+                                                onClick={() => openGallery(i)}
+                                            >
+                                                <span>{t.openGallery}</span>
+                                                <i className="fas fa-expand"></i>
+                                            </button>
+                                        ) : null}
                                     </div>
                                 </div>
                             </SpotlightCard>
@@ -237,6 +274,52 @@ export default function Projects() {
                     </Magnet>
                 </motion.div>
             </div>
+            {activeGalleryIndex !== null ? (
+                <div className={styles.imageModalOverlay} onClick={closeGallery}>
+                    <div className={styles.imageModal} onClick={(e) => e.stopPropagation()}>
+                        <button
+                            type="button"
+                            className={styles.imageModalClose}
+                            onClick={closeGallery}
+                            aria-label={t.closePreview}
+                        >
+                            <i className="fas fa-times"></i>
+                        </button>
+                        <button
+                            type="button"
+                            className={`${styles.imageModalNav} ${styles.imageModalPrev}`}
+                            onClick={showPrevImage}
+                            aria-label="Previous image"
+                        >
+                            <i className="fas fa-chevron-left"></i>
+                        </button>
+                        <img
+                            src={projects[activeGalleryIndex].images[activeImageIndex]}
+                            alt={`${projects[activeGalleryIndex].title[language] || projects[activeGalleryIndex].title.tr} preview ${activeImageIndex + 1}`}
+                            className={styles.imageModalImg}
+                        />
+                        <div className={styles.imageModalDots}>
+                            {projects[activeGalleryIndex].images.map((_, imgIndex) => (
+                                <button
+                                    key={imgIndex}
+                                    type="button"
+                                    className={`${styles.imageModalDot} ${activeImageIndex === imgIndex ? styles.imageModalDotActive : ""}`}
+                                    onClick={() => setActiveImageIndex(imgIndex)}
+                                    aria-label={`Go to image ${imgIndex + 1}`}
+                                />
+                            ))}
+                        </div>
+                        <button
+                            type="button"
+                            className={`${styles.imageModalNav} ${styles.imageModalNext}`}
+                            onClick={showNextImage}
+                            aria-label="Next image"
+                        >
+                            <i className="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            ) : null}
         </section>
     );
 }
