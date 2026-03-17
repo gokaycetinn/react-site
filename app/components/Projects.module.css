@@ -378,6 +378,10 @@
     .projects {
         padding: 60px 0;
     }
+    
+    .container {
+        padding: 0 16px;
+    }
 
     .header {
         margin-bottom: 32px;
@@ -390,15 +394,16 @@
     .scrollContainer {
         gap: 16px;
         padding-left: 0;
-        padding-right: 16px;
+        padding-right: 16px; /* Offset for right edge */
     }
 
     .cardWrapper {
-        width: 300px;
+        width: 85vw;
+        max-width: 340px;
     }
 
     .cardImage {
-        height: 190px;
+        height: 200px;
     }
 
     .cardImageVideo {
@@ -406,15 +411,23 @@
     }
 
     .cardContent {
-        padding: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 200px); /* Fill remaining height */
     }
 
     .cardContent h3 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .cardContent p {
-        font-size: 13px;
+        font-size: 14px;
+        flex-grow: 1; /* Push bottom elements */
+    }
+
+    .cardLinks {
+        margin-top: 16px;
     }
 
     .imageModalNav {

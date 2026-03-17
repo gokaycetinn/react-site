@@ -195,7 +195,9 @@
 @media (max-width: 768px) {
     .hero {
         padding: 100px 0 60px;
-        min-height: auto;
+        min-height: 85vh; /* Better visual for mobile landing */
+        align-items: center;
+        display: flex;
     }
 
     .content {
