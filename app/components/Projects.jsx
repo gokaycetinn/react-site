@@ -23,12 +23,19 @@ const projects = [
             { label: { tr: "Web Sitesi", en: "Website" }, href: "https://gokaycetinn.github.io/ai-chef-website/", icon: "fas fa-globe" },
         ],
         video: `${basePath}/images/ai-chef.mp4`,
+        images: [
+
+            `${basePath}/images/Home.png`,
+            `${basePath}/images/Recipies.png`,
+            `${basePath}/images/Favorites.png`,
+            `${basePath}/images/Signup.png`,
+        ],
     },
     {
         title: { tr: "CNN Based Traffic Analysis", en: "CNN Based Traffic Analysis" },
         description: {
-            tr: "UA-DETRAC veri seti üzerinde YOLOv8 modeli eğitilerek geliştirilen otonom bir trafik analiz sistemi.",
-            en: "An autonomous traffic analysis system developed by training a YOLOv8 model on the UA-DETRAC dataset.",
+            tr: "Trafik kamerası görüntülerinden araçları tespit edip sınıflandırarak gerçek zamanlı analiz yapan, yapay zeka destekli bir bilgisayarlı görü sistemi. UA-DETRAC veri seti üzerinde eğittiğim YOLOv8 modeli ile geliştirilmiş ve etkileşimli Streamlit arayüzüyle sunulmuştur.",
+            en: "An AI-powered computer vision system that performs real-time traffic analysis by detecting and classifying vehicles from traffic camera images. The system is built using a YOLOv8 model I trained on the UA-DETRAC dataset, and deployed through an interactive Streamlit web interface.",
         },
         tech: ["Python", "ML", "Data Analysis"],
         links: [
@@ -117,13 +124,13 @@ export default function Projects() {
         ? {
             title: "Featured Projects",
             all: "View All Projects",
-            openGallery: "Open Gallery",
+            openGallery: "Project Images",
             closePreview: "Close preview",
         }
         : {
             title: "Öne Çıkan Projeler",
             all: "Tüm Projeleri Gör",
-            openGallery: "Galeriyi Aç",
+            openGallery: "Proje Görselleri",
             closePreview: "Onizlemeyi Kapat",
         };
 
