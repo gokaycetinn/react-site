@@ -126,13 +126,26 @@ export default function Projects() {
             all: "View All Projects",
             openGallery: "Project Images",
             closePreview: "Close preview",
+            scrollLeft: "Scroll projects left",
+            scrollRight: "Scroll projects right",
         }
         : {
             title: "Öne Çıkan Projeler",
             all: "Tüm Projeleri Gör",
             openGallery: "Proje Görselleri",
             closePreview: "Onizlemeyi Kapat",
+            scrollLeft: "Projeleri sola kaydır",
+            scrollRight: "Projeleri sağa kaydır",
         };
+
+    const scrollProjects = (direction) => {
+        if (!scrollRef.current) return;
+        const scrollAmount = Math.max(scrollRef.current.clientWidth * 0.8, 280);
+        scrollRef.current.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+        });
+    };
 
     const openGallery = (projectIndex) => {
         setActiveGalleryIndex(projectIndex);
@@ -163,6 +176,25 @@ export default function Projects() {
                     <h2 className={styles.title}>
                         <BlurText text={t.title} delay={0.1} />
                     </h2>
+                </div>
+
+                <div className={styles.desktopArrows}>
+                    <button
+                        type="button"
+                        className={styles.arrowBtn}
+                        aria-label={t.scrollLeft}
+                        onClick={() => scrollProjects("left")}
+                    >
+                        <i className="fas fa-chevron-left"></i>
+                    </button>
+                    <button
+                        type="button"
+                        className={styles.arrowBtn}
+                        aria-label={t.scrollRight}
+                        onClick={() => scrollProjects("right")}
+                    >
+                        <i className="fas fa-chevron-right"></i>
+                    </button>
                 </div>
 
                 <div

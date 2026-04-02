@@ -37,8 +37,8 @@ export default function Hero() {
     const { language } = useLanguage();
     const localizedTitles = useMemo(
         () => (language === "en"
-            ? ["Mobile App Developer", "Full Stack Developer"]
-            : ["Mobil Uygulama Geliştirici", "Full Stack Developer"]),
+            ? ["Computer Engineer", "AI Solutions Developer"]
+            : ["Bilgisayar Mühendisi", "AI Solutions Developer"]),
         [language]
     );
     const text = language === "en"

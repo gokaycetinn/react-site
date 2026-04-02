@@ -22,28 +22,30 @@
 .desktopArrows {
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 8px;
     margin-right: 26px;
     margin-bottom: 14px;
 }
 
 .arrowBtn {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: var(--bg-card);
-    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+    color: rgba(255, 255, 255, 0.9);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 .arrowBtn:hover {
-    border-color: var(--primary);
-    color: var(--primary-light);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
 }
 
 /* Horizontal scroll container */
