@@ -82,8 +82,8 @@ export default function Contact() {
                                         target={item.href.startsWith("mailto") || item.href.startsWith("tel") ? undefined : "_blank"}
                                         rel="noopener noreferrer"
                                         className={styles.card}
-                                        whileHover={{ y: -6, scale: 1.02, borderColor: "var(--primary)" }}
-                                        transition={{ type: "spring", stiffness: 300 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                     >
                                         <div className={styles.cardIcon}>
                                             <i className={item.icon}></i>

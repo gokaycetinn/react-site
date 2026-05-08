@@ -1,17 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import BlurText from "./ui/BlurText";
 import ScrollReveal from "./ui/ScrollReveal";
 import styles from "./Experience.module.css";
 import { useLanguage } from "../context/LanguageContext";
 
+import e4eLogo from "../asset/E4E.png";
+import sportDigitaleLogo from "../asset/SportDigitale.jpg";
+import yapayZekaLogo from "../asset/YapayZeka.png";
+import bluesenseLogo from "../asset/bluesense.svg";
+
 const experiences = [
     {
         current: true,
+        logo: sportDigitaleLogo,
         badge: { tr: "Devam Ediyor", en: "Ongoing" },
         date: { tr: "Mart 2026 - Devam", en: "Mar 2026 - Present" },
         company: "SPORTS DIGITALE",
-        role: { tr: "Stajyer", en: "Intern" },
+        role: { tr: "Yarı Zamanlı", en: "Part-Time" },
         summary: {
             tr: "TÜBİTAK onaylı gerçek dünya projelerine katkıda bulunarak yazılım geliştirme süreçlerine destek sağlıyor ve temel ürün yeteneklerinin genişletilmesinde görev alıyorum. Görüntü işleme uygulamaları ve ilgili çözümlerin geliştirilmesi dahil olmak üzere yapay zeka odaklı girişimleri destekliyorum.",
             en: "Contributing to TÜBİTAK-approved real-world projects by supporting development processes and enhancing core product functionalities. Supporting AI-focused initiatives, including image processing applications and related solution development.",
@@ -32,6 +39,7 @@ const experiences = [
     },
     {
         current: true,
+        logo: yapayZekaLogo,
         badge: { tr: "Devam Ediyor", en: "Ongoing" },
         date: { tr: "Aralık 2025 - Devam", en: "Dec 2025 - Present" },
         company: "Yapay Zeka ve Teknoloji Akademisi",
@@ -59,6 +67,7 @@ const experiences = [
         tags: ["AI", "Machine Learning", "Google"],
     },
     {
+        logo: bluesenseLogo,
         date: { tr: "Nisan 2025 - Ekim 2025 · 7 ay", en: "Apr 2025 - Oct 2025 · 7 months" },
         company: "BLUESENSE",
         role: { tr: "Stajyer", en: "Intern" },
@@ -87,6 +96,7 @@ const experiences = [
         tags: ["Mobile Dev", "Performance", "Remote Team"],
     },
     {
+        logo: e4eLogo,
         date: { tr: "Eylül 2024 - Ekim 2024 · 2 ay", en: "Sep 2024 - Oct 2024 · 2 months" },
         company: "E4E Elektronik Mühendislik Yazılım Tasarım A.Ş.",
         role: { tr: "Stajyer", en: "Intern" },
@@ -164,12 +174,21 @@ export default function Experience() {
                                     )}
                                 </div>
                                 <div className={styles.content}>
-                                    {exp.badge && (
-                                        <span className={styles.badge}>{exp.badge[language] || exp.badge.tr}</span>
-                                    )}
-                                    <span className={styles.date}>{exp.date[language] || exp.date.tr}</span>
-                                    <h3>{exp.company}</h3>
-                                    <h4>{exp.role[language] || exp.role.tr}</h4>
+                                    <div className={styles.contentHeader}>
+                                        <div className={styles.headerInfo}>
+                                            {exp.badge && (
+                                                <span className={styles.badge}>{exp.badge[language] || exp.badge.tr}</span>
+                                            )}
+                                            <span className={styles.date}>{exp.date[language] || exp.date.tr}</span>
+                                            <h3>{exp.company}</h3>
+                                            <h4>{exp.role[language] || exp.role.tr}</h4>
+                                        </div>
+                                        {exp.logo && (
+                                            <div className={`${styles.logoContainer} ${exp.company === "SPORTS DIGITALE" ? styles.logoSD : exp.company === "Yapay Zeka ve Teknoloji Akademisi" ? styles.logoWhiteBg : ""}`}>
+                                                <Image src={exp.logo} alt={exp.company} fill className={styles.logoImage} />
+                                            </div>
+                                        )}
+                                    </div>
                                     {exp.location && <span className={styles.location}>{exp.location[language] || exp.location.tr}</span>}
                                     <p>{exp.summary[language] || exp.summary.tr}</p>
                                     <ul className={styles.detailsList}>
@@ -192,12 +211,21 @@ export default function Experience() {
                 <div className={styles.mobileScroll}>
                     {experiences.map((exp, i) => (
                         <div key={i} className={styles.mobileCard}>
-                            {exp.badge && (
-                                <span className={styles.badge}>{exp.badge[language] || exp.badge.tr}</span>
-                            )}
-                            <span className={styles.date}>{exp.date[language] || exp.date.tr}</span>
-                            <h3>{exp.company}</h3>
-                            <h4>{exp.role[language] || exp.role.tr}</h4>
+                            <div className={styles.contentHeader}>
+                                <div className={styles.headerInfo}>
+                                    {exp.badge && (
+                                        <span className={styles.badge}>{exp.badge[language] || exp.badge.tr}</span>
+                                    )}
+                                    <span className={styles.date}>{exp.date[language] || exp.date.tr}</span>
+                                    <h3>{exp.company}</h3>
+                                    <h4>{exp.role[language] || exp.role.tr}</h4>
+                                </div>
+                                {exp.logo && (
+                                    <div className={`${styles.logoContainer} ${exp.company === "SPORTS DIGITALE" ? styles.logoSD : exp.company === "Yapay Zeka ve Teknoloji Akademisi" ? styles.logoWhiteBg : ""}`}>
+                                        <Image src={exp.logo} alt={exp.company} fill className={styles.logoImage} />
+                                    </div>
+                                )}
+                            </div>
                             {exp.location && <span className={styles.location}>{exp.location[language] || exp.location.tr}</span>}
                             <p>{exp.summary[language] || exp.summary.tr}</p>
                             <ul className={styles.detailsList}>
