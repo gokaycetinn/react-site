@@ -1,9 +1,7 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import BlurText from "./ui/BlurText";
 import ScrollReveal from "./ui/ScrollReveal";
-import Magnet from "./ui/Magnet";
 import styles from "./Contact.module.css";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -50,24 +48,6 @@ export default function Contact() {
         { icon: "fab fa-github", label: "GitHub", href: "https://github.com/gokaycetinn" },
     ];
 
-    const [submitted, setSubmitted] = useState(false);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-
-        const subject = encodeURIComponent(data.subject);
-        const body = encodeURIComponent(`${t.bodyName}: ${data.name}\n${t.bodyEmail}: ${data.email}\n\n${t.bodyMessage}:\n${data.message}`);
-        window.location.href = `mailto:gokaycetin44@gmail.com?subject=${subject}&body=${body}`;
-
-        setSubmitted(true);
-        setTimeout(() => {
-            setSubmitted(false);
-            e.target.reset();
-        }, 3000);
-    };
-
     return (
         <section id="contact" className={styles.contact}>
             <div className={styles.container}>
@@ -102,7 +82,7 @@ export default function Contact() {
                                         target={item.href.startsWith("mailto") || item.href.startsWith("tel") ? undefined : "_blank"}
                                         rel="noopener noreferrer"
                                         className={styles.card}
-                                        whileHover={{ y: -4, borderColor: "var(--primary)" }}
+                                        whileHover={{ y: -6, scale: 1.02, borderColor: "var(--primary)" }}
                                         transition={{ type: "spring", stiffness: 300 }}
                                     >
                                         <div className={styles.cardIcon}>
@@ -110,49 +90,21 @@ export default function Contact() {
                                         </div>
                                         <div className={styles.cardDetails}>
                                             <span>{item.label}</span>
+                                            <span className={styles.cardSubtitle}>
+                                                {item.label === "Mail" ? "gokaycetin44@gmail.com" :
+                                                 item.label === t.phone ? "+90 535 648 33 43" :
+                                                 item.label === "LinkedIn" ? "gokay-cetinakdogan" :
+                                                 "gokaycetinn"}
+                                            </span>
+                                        </div>
+                                        <div className={styles.cardArrow}>
+                                            <i className="fas fa-arrow-right"></i>
                                         </div>
                                     </motion.a>
                                 </ScrollReveal>
                             ))}
                         </div>
                     </div>
-
-                    <ScrollReveal direction="right" delay={0.2}>
-                        <form className={styles.form} onSubmit={handleSubmit}>
-                            <div className={styles.formGroup}>
-                                <input type="text" name="name" id="contact-name" required placeholder=" " />
-                                <label htmlFor="contact-name">{t.name}</label>
-                                <span className={styles.focusBorder}></span>
-                            </div>
-                            <div className={styles.formGroup}>
-                                <input type="email" name="email" id="contact-email" required placeholder=" " />
-                                <label htmlFor="contact-email">{t.email}</label>
-                                <span className={styles.focusBorder}></span>
-                            </div>
-                            <div className={styles.formGroup}>
-                                <input type="text" name="subject" id="contact-subject" required placeholder=" " />
-                                <label htmlFor="contact-subject">{t.subject}</label>
-                                <span className={styles.focusBorder}></span>
-                            </div>
-                            <div className={styles.formGroup}>
-                                <textarea name="message" id="contact-message" rows="5" required placeholder=" "></textarea>
-                                <label htmlFor="contact-message">{t.message}</label>
-                                <span className={styles.focusBorder}></span>
-                            </div>
-                            <Magnet strength={0.15}>
-                                <motion.button
-                                    type="submit"
-                                    className={styles.submitBtn}
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    animate={submitted ? { background: "linear-gradient(135deg, #10b981, #059669)" } : {}}
-                                >
-                                    <span>{submitted ? t.sent : t.send}</span>
-                                    <i className={submitted ? "fas fa-check" : "fas fa-paper-plane"}></i>
-                                </motion.button>
-                            </Magnet>
-                        </form>
-                    </ScrollReveal>
                 </div>
             </div>
         </section>

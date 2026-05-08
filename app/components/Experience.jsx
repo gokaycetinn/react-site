@@ -9,6 +9,30 @@ const experiences = [
     {
         current: true,
         badge: { tr: "Devam Ediyor", en: "Ongoing" },
+        date: { tr: "Mart 2026 - Devam", en: "Mar 2026 - Present" },
+        company: "SPORTS DIGITALE",
+        role: { tr: "Stajyer", en: "Intern" },
+        summary: {
+            tr: "TÜBİTAK onaylı gerçek dünya projelerine katkıda bulunarak yazılım geliştirme süreçlerine destek sağlıyor ve temel ürün yeteneklerinin genişletilmesinde görev alıyorum. Görüntü işleme uygulamaları ve ilgili çözümlerin geliştirilmesi dahil olmak üzere yapay zeka odaklı girişimleri destekliyorum.",
+            en: "Contributing to TÜBİTAK-approved real-world projects by supporting development processes and enhancing core product functionalities. Supporting AI-focused initiatives, including image processing applications and related solution development.",
+        },
+        bullets: {
+            tr: [
+                "TÜBİTAK onaylı projelere etkin destek ve katkı.",
+                "Görüntü işleme uygulamalarında çeşitli çözümler.",
+                "Yapay zeka odaklı girişimlerde çekirdek ürün süreçlerinde aktif rol."
+            ],
+            en: [
+                "Active support and contribution to TÜBİTAK-approved projects.",
+                "Developing solutions in image processing applications.",
+                "Active role in core product processes for AI-focused initiatives."
+            ],
+        },
+        tags: ["TÜBİTAK", "AI", "Image Processing"],
+    },
+    {
+        current: true,
+        badge: { tr: "Devam Ediyor", en: "Ongoing" },
         date: { tr: "Aralık 2025 - Devam", en: "Dec 2025 - Present" },
         company: "Yapay Zeka ve Teknoloji Akademisi",
         role: { tr: "Stajyer", en: "Intern" },
