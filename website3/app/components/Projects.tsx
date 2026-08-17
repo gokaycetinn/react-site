@@ -33,7 +33,15 @@ const linkIcons = {
   website: GlobeHemisphereWest,
 };
 
-function ProjectMedia({ src, alt, priority = false, fit = "cover", sizes }) {
+interface ProjectMediaProps {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  fit?: "cover" | "contain";
+  sizes?: string;
+}
+
+function ProjectMedia({ src, alt, priority = false, fit = "cover", sizes }: ProjectMediaProps) {
   const { t } = useApp();
   const [status, setStatus] = useState("loading");
 
@@ -249,7 +257,7 @@ export default function Projects() {
 
           <div className="project-index-header">
             <p>{t.projectIndex}</p>
-            <a href="https://github.com/gokaycetinn?tab=repositories" target="_blank" rel="noreferrer">
+            <a href="https://github.com/gokaycetinn" target="_blank" rel="noreferrer">
               <GithubLogo size={18} weight="fill" aria-hidden="true" />
               <span>{t.allProjects}</span>
               <ArrowUpRight size={15} weight="bold" aria-hidden="true" />

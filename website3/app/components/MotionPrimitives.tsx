@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -9,7 +9,14 @@ import {
   useSpring,
 } from "motion/react";
 
-export function Reveal({ children, className = "", delay = 0, amount = 0.25 }) {
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  amount?: number;
+}
+
+export function Reveal({ children, className = "", delay = 0, amount = 0.25 }: RevealProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -29,20 +36,28 @@ export function Reveal({ children, className = "", delay = 0, amount = 0.25 }) {
   );
 }
 
+interface MagneticLinkProps {
+  children: ReactNode;
+  className?: string;
+  href: string;
+  external?: boolean;
+  ariaLabel?: string;
+}
+
 export function MagneticLink({
   children,
   className = "",
   href,
   external = false,
   ariaLabel,
-}) {
+}: MagneticLinkProps) {
   const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 220, damping: 18, mass: 0.35 });
   const springY = useSpring(y, { stiffness: 220, damping: 18, mass: 0.35 });
 
-  const handlePointerMove = (event) => {
+  const handlePointerMove = (event: React.PointerEvent<HTMLAnchorElement>) => {
     if (reduceMotion || event.pointerType === "touch") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     x.set((event.clientX - bounds.left - bounds.width / 2) * 0.13);

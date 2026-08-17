@@ -25,7 +25,7 @@ function ExperienceSheet({ experience, index, language, t }) {
         "--stack-index": index,
         scale: reduceMotion ? 1 : scale,
         opacity: reduceMotion ? 1 : opacity,
-      }}
+      } as React.CSSProperties}
     >
       <header className="experience-sheet-header">
         <div className="company-logo experience-sheet-logo">

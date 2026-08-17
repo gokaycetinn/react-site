@@ -1,29 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ArrowRight, GithubLogo } from "@phosphor-icons/react";
+import { useRef } from "react";
+import { ArrowRight, GithubLogo, DownloadSimple } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import { useApp } from "./AppProvider";
 import { MagneticLink } from "./MotionPrimitives";
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+import TerminalWindow from "./TerminalWindow";
 
 export default function Hero() {
-  const { t } = useApp();
+  const { language, t } = useApp();
   const reduceMotion = useReducedMotion();
-  const videoRef = useRef(null);
   const mediaRef = useRef(null);
-
-  useEffect(() => {
-    if (!videoRef.current) return;
-
-    if (reduceMotion) {
-      videoRef.current.pause();
-      return;
-    }
-
-    videoRef.current.play().catch(() => {});
-  }, [reduceMotion]);
 
   const updateSpotlight = (event) => {
     if (!mediaRef.current) return;
@@ -95,6 +82,14 @@ export default function Hero() {
               <GithubLogo size={19} weight="fill" aria-hidden="true" />
               <span>{t.heroSecondary}</span>
             </MagneticLink>
+            <a
+              href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/cv.pdf`}
+              className="button button-secondary"
+              download
+            >
+              <DownloadSimple size={19} weight="bold" aria-hidden="true" />
+              <span>{t.downloadCV}</span>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -106,21 +101,7 @@ export default function Hero() {
           transition={{ duration: reduceMotion ? 0 : 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           onPointerMove={updateSpotlight}
         >
-          <div className="hero-video-frame">
-            <video
-              ref={videoRef}
-              muted
-              loop
-              playsInline
-              autoPlay={!reduceMotion}
-              preload="auto"
-              poster={`${basePath}/images/coding-workflow-poster.jpg`}
-              aria-label={t.heroVisualAlt}
-            >
-              <source src={`${basePath}/images/coding-workflow.mp4`} type="video/mp4" />
-            </video>
-            <div className="hero-video-finish" aria-hidden="true" />
-          </div>
+          <TerminalWindow language={language} label={t.heroVisualAlt} />
         </motion.figure>
       </div>
     </section>

@@ -30,7 +30,7 @@ export const copy = {
     heroPrimary: "Projeleri Gör",
     heroSecondary: "GitHub",
     heroVisualAlt:
-      "Bilgisayar başında yazılım geliştiren bir kişiyi gösteren animasyon",
+      "Gökay'ın projelerini ve teknik uzmanlıklarını gösteren animasyonlu macOS terminal penceresi",
     aboutTitle: "Fikri, çalışan ürüne dönüştürüyorum.",
     aboutLead:
       "Çankaya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Fikirleri kullanılabilir, sürdürülebilir ve gerçek ihtiyaçlara cevap veren yazılım ürünlerine dönüştürüyorum.",
@@ -73,6 +73,10 @@ export const copy = {
     phoneLabel: "Telefon",
     socialLabel: "Profesyonel ağlar",
     rights: "Tüm hakları saklıdır.",
+    notFoundTitle: "Sayfa bulunamadı",
+    notFoundBody: "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    notFoundBack: "Ana sayfaya dön",
+    downloadCV: "CV İndir",
   },
   en: {
     skip: "Skip to main content",
@@ -88,7 +92,7 @@ export const copy = {
     heroPrimary: "View Projects",
     heroSecondary: "GitHub",
     heroVisualAlt:
-      "Animation of a person developing software at a computer",
+      "Animated macOS terminal window showing Gökay's projects and technical expertise",
     aboutTitle: "I turn ideas into working products.",
     aboutLead:
       "I am a Computer Engineering graduate from Çankaya University. I turn ideas into usable, maintainable software products that address real needs.",
@@ -131,6 +135,10 @@ export const copy = {
     phoneLabel: "Phone",
     socialLabel: "Professional networks",
     rights: "All rights reserved.",
+    notFoundTitle: "Page not found",
+    notFoundBody: "The page you're looking for doesn't exist or has been moved.",
+    notFoundBack: "Back to homepage",
+    downloadCV: "Download CV",
   },
 };
 
@@ -143,11 +151,11 @@ export const featuredProjects = [
       tr: "Kullanıcının seçtiği malzemelerden kişiselleştirilmiş tarifler üreten, App Store'da yayınlanmış yapay zeka destekli mobil uygulama.",
       en: "An App Store mobile product that creates personalized recipes from ingredients selected by the user.",
     },
-    image: `${basePath}/images/ai-chef-home.png`,
+    image: `${basePath}/images/ai-chef-home.webp`,
     gallery: [
-      `${basePath}/images/ai-chef-home.png`,
-      `${basePath}/images/ai-chef-recipes.png`,
-      `${basePath}/images/ai-chef-favorites.png`,
+      `${basePath}/images/ai-chef-home.webp`,
+      `${basePath}/images/ai-chef-recipes.webp`,
+      `${basePath}/images/ai-chef-favorites.webp`,
     ],
     imageAlt: { tr: "AI Chef mobil uygulamasının ana ekranı", en: "AI Chef mobile app home screen" },
     tech: ["React Native", "AI", "iOS"],
@@ -172,8 +180,8 @@ export const featuredProjects = [
       tr: "UA-DETRAC verisi üzerinde eğitilmiş YOLOv8 modeliyle araçları tespit eden ve Streamlit üzerinden gerçek zamanlı analiz sunan sistem.",
       en: "A Streamlit system that detects vehicles in real time using a YOLOv8 model trained on UA-DETRAC data.",
     },
-    image: `${basePath}/images/cnn-traffic.png`,
-    gallery: [`${basePath}/images/cnn-traffic.png`],
+    image: `${basePath}/images/cnn-traffic.webp`,
+    gallery: [`${basePath}/images/cnn-traffic.webp`],
     imageAlt: { tr: "Araç tespit ve trafik analizi arayüzü", en: "Vehicle detection and traffic analysis interface" },
     tech: ["Python", "YOLOv8", "Streamlit"],
     links: [
@@ -197,11 +205,11 @@ export const featuredProjects = [
       tr: "Firebase AI, Remote Config, Hive ve Cubit ile geliştirilen; dinamik koç profilleri ve yerel sohbet geçmişi sunan Flutter uygulaması.",
       en: "A Flutter app with dynamic coaches and local chat history, built with Firebase AI, Remote Config, Hive, and Cubit.",
     },
-    image: `${basePath}/images/wellness-home.png`,
+    image: `${basePath}/images/wellness-home.webp`,
     gallery: [
-      `${basePath}/images/wellness-home.png`,
-      `${basePath}/images/wellness-dietitian.png`,
-      `${basePath}/images/wellness-fitness.png`,
+      `${basePath}/images/wellness-home.webp`,
+      `${basePath}/images/wellness-dietitian.webp`,
+      `${basePath}/images/wellness-fitness.webp`,
     ],
     imageAlt: { tr: "Wellness AI koç seçim ekranı", en: "Wellness AI coach selection screen" },
     tech: ["Flutter", "Firebase AI", "Cubit"],
@@ -226,7 +234,7 @@ export const additionalProjects = [
     },
     tech: ["Python", "Machine Learning"],
     href: "https://github.com/gokaycetinn/Product-Recommendation-System",
-    image: `${basePath}/images/recommendation-system.png`,
+    image: `${basePath}/images/recommendation-system.webp`,
     icon: "brain",
   },
   {
@@ -297,7 +305,7 @@ export const experiences = [
     role: { tr: "Stajyer", en: "Intern" },
     date: { tr: "Aralık 2025 - Devam", en: "Dec 2025 - Present" },
     ongoing: true,
-    logo: `${basePath}/logos/ai-academy.png`,
+    logo: `${basePath}/logos/ai-academy.webp`,
     summary: {
       tr: "Yapay zeka destekli uygulama geliştirme programlarına ve uygulamalı teknoloji projelerine aktif olarak katılıyorum.",
       en: "I actively participate in AI application development programs and hands-on technology projects.",
@@ -344,7 +352,7 @@ export const experiences = [
     company: "E4E Elektronik Mühendislik Yazılım Tasarım A.Ş.",
     role: { tr: "Stajyer", en: "Intern" },
     date: { tr: "Eylül 2024 - Ekim 2024, 2 ay", en: "Sep 2024 - Oct 2024, 2 months" },
-    logo: `${basePath}/logos/e4e.png`,
+    logo: `${basePath}/logos/e4e.webp`,
     summary: {
       tr: "Dijital veri yönetimi ve masaüstü uygulama geliştirme süreçlerinde yapılandırılmış çözümler ürettim.",
       en: "I built structured solutions across digital data management and desktop application development.",

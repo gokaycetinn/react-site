@@ -9,7 +9,28 @@ import { useApp } from "./AppProvider";
 export default function Header() {
   const { language, setLanguage, theme, setTheme, t } = useApp();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" }
+    );
+
+    const sections = document.querySelectorAll(
+      "#home, #about, #projects, #experience, #contact"
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return undefined;
@@ -44,7 +65,11 @@ export default function Header() {
 
           <nav className="desktop-nav" aria-label="Primary navigation">
             {menuItems.map((item) => (
-              <a key={item.href} href={item.href}>
+              <a 
+                key={item.href} 
+                href={item.href}
+                className={activeSection === item.href.substring(1) ? "is-active" : ""}
+              >
                 {item.label}
               </a>
             ))}
