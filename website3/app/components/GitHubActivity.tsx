@@ -11,10 +11,11 @@ export default function GitHubActivity() {
   const { language, theme, t } = useApp();
   const isTr = language === "tr";
 
-  // Theme-matched custom streak stats
+  // Theme-matched custom streak stats (demolab defaults to en; locale=en causes 404/API error)
+  const localeParam = isTr ? "&locale=tr" : "";
   const streakUrl = theme === "dark"
-    ? `https://streak-stats.demolab.com?user=gokaycetinn&locale=${isTr ? "tr" : "en"}&mode=daily&background=0c0f0d&border=222b24&stroke=222b24&ring=c8ef5b&fire=ff7675&currStreakNum=c8ef5b&sideNums=edf2e9&currStreakLabel=c8ef5b&sideLabels=a8b3a4&dates=6f7a6b&border_radius=10`
-    : `https://streak-stats.demolab.com?user=gokaycetinn&locale=${isTr ? "tr" : "en"}&mode=daily&background=f4f6f0&border=e2e7dc&stroke=e2e7dc&ring=4a7c13&fire=e84118&currStreakNum=4a7c13&sideNums=181b16&currStreakLabel=4a7c13&sideLabels=657060&dates=8c9688&border_radius=10`;
+    ? `https://streak-stats.demolab.com?user=gokaycetinn${localeParam}&mode=daily&background=0c0f0d&border=222b24&stroke=222b24&ring=c8ef5b&fire=ff7675&currStreakNum=c8ef5b&sideNums=edf2e9&currStreakLabel=c8ef5b&sideLabels=a8b3a4&dates=6f7a6b&border_radius=10`
+    : `https://streak-stats.demolab.com?user=gokaycetinn${localeParam}&mode=daily&background=f4f6f0&border=e2e7dc&stroke=e2e7dc&ring=4a7c13&fire=e84118&currStreakNum=4a7c13&sideNums=181b16&currStreakLabel=4a7c13&sideLabels=657060&dates=8c9688&border_radius=10`;
 
   return (
     <div className="github-activity-card">

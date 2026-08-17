@@ -7,7 +7,7 @@ import { useApp } from "./AppProvider";
 
 interface TerminalLine {
   text: string;
-  tone?: "strong" | "muted" | "accent" | "success" | "warning" | "error";
+  tone?: "strong" | "muted" | "accent" | "success" | "warning" | "error" | "matrix";
 }
 
 interface CommandEntry {
@@ -45,6 +45,7 @@ const menuItems = [
 
   const containerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const matrixTimeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
   const initialOutput: TerminalLine[] = [
     { text: "Gökay Çetinakdoğan", tone: "strong" },
@@ -196,6 +197,8 @@ const menuItems = [
 
       case "clear":
       case "cls":
+        matrixTimeoutsRef.current.forEach(clearTimeout);
+        matrixTimeoutsRef.current = [];
         setHistory([]);
         setIsMatrixMode(false);
         setInputVal("");
@@ -205,13 +208,52 @@ const menuItems = [
       case "matrix":
         setIsMenuOpen(false);
         setIsMatrixMode(true);
-        output = [
-          { text: "Wake up, Neo...", tone: "success" },
-          { text: "The Matrix has you.", tone: "success" },
-          { text: "Follow the white rabbit. 🐇", tone: "success" },
-          { text: "01000111 01101111 01101011 01100001 01111001", tone: "success" },
-        ];
-        break;
+        {
+          const matrixSequence = [
+            "Wake up, Neo...",
+            "The Matrix has you.",
+            "follow the white rabbit.",
+            "Knock, Knock, Neo.",
+            "01001011 01101110 01101111 01100011 01101011 00100000",
+            "01001110 01100101 01101111 00101110 00100000 00110001",
+            "11010010 01010110 11001010 10010101 01101110 01011101",
+            "01101111 01110010 01101101 01110101 01110011 01100011",
+            "01000111 01101011 01100001 01111001 00100001 00110000",
+          ];
+
+          matrixTimeoutsRef.current.forEach(clearTimeout);
+          matrixTimeoutsRef.current = [];
+
+          // Add first line immediately
+          setHistory((prev) => [
+            ...prev,
+            {
+              command: trimmed,
+              output: [{ text: matrixSequence[0], tone: "matrix" }],
+              isHelpMenu: false,
+            },
+          ]);
+          setInputVal("");
+
+          // Stream subsequent lines with animated typing delay
+          matrixSequence.slice(1).forEach((lineText, idx) => {
+            const delay = (idx + 1) * 360;
+            const timer = setTimeout(() => {
+              setHistory((prev) => {
+                if (prev.length === 0) return prev;
+                const lastIdx = prev.length - 1;
+                const updated = [...prev];
+                updated[lastIdx] = {
+                  ...updated[lastIdx],
+                  output: [...updated[lastIdx].output, { text: lineText, tone: "matrix" }],
+                };
+                return updated;
+              });
+            }, delay);
+            matrixTimeoutsRef.current.push(timer);
+          });
+          return;
+        }
 
       case "sudo":
         setIsMenuOpen(false);
@@ -322,7 +364,7 @@ const menuItems = [
     <div
       ref={containerRef}
       tabIndex={0}
-      className={`terminal-window ${isMatrixMode ? "terminal-matrix" : ""} ${isFocused ? "terminal-active-focus" : ""}`}
+      className={`terminal-window ${isFocused ? "terminal-active-focus" : ""}`}
       role="region"
       aria-label={label}
       onFocus={() => setIsFocused(true)}

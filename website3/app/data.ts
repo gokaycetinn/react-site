@@ -35,7 +35,7 @@ export const copy = {
     aboutLead:
       "Yazılım geliştirmeyi sadece kod yazmak olarak değil; gerçek dünyadaki karmaşık problemleri yalın, sağlam ve sürdürülebilir ürünlere dönüştürme süreci olarak görüyorum.",
     aboutBody:
-      "Çankaya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Uçtan uca sistem geliştirme süreçlerinde; yapay zekâ modelleri, veri işleme hatları (Kafka, Spark) ve kullanıcı odaklı modern arayüzleri entegre ediyorum. Sistemleri sadece çalıştırmakla kalmıyor; performans, sürdürülebilirlik ve temiz mimari standartlarına göre inşa ediyorum.",
+      "Çankaya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Uçtan uca sistem geliştirme süreçlerinde; yapay zekâ modelleri, veri işleme hatları ve kullanıcı odaklı modern arayüzleri entegre ediyorum. Sistemleri sadece çalıştırmakla kalmıyor; performans, sürdürülebilirlik ve temiz mimari standartlarına göre inşa ediyorum.",
     projectsStat: "Öne Çıkan Proje",
     education: "Eğitim",
     educationValue: "Bilgisayar Mühendisliği",
@@ -106,7 +106,7 @@ export const copy = {
     aboutLead:
       "I view software engineering not just as writing code, but as transforming real-world complexities into clean, resilient, and sustainable products.",
     aboutBody:
-      "Computer Engineering graduate from Çankaya University. I engineer end-to-end systems by integrating AI models, distributed data processing pipelines (Kafka, Spark), and modern user interfaces. Focused on performance, sustainable architectures, and clean engineering standards.",
+      "Computer Engineering graduate from Çankaya University. I engineer end-to-end systems by integrating AI models, distributed data processing pipelines, and modern user interfaces. Focused on performance, sustainable architectures, and clean engineering standards.",
     projectsStat: "Featured Projects",
     education: "Education",
     educationValue: "Computer Engineering (B.S.)",
