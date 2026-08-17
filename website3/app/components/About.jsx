@@ -7,7 +7,6 @@ import {
 } from "@phosphor-icons/react";
 import { useApp } from "./AppProvider";
 import { Reveal } from "./MotionPrimitives";
-import GitHubActivity from "./GitHubActivity";
 
 export default function About() {
   const { t } = useApp();
@@ -45,12 +44,6 @@ export default function About() {
             <span className="fact-label">{t.location}</span>
             <strong>{t.locationValue}</strong>
             <small>{t.locationMeta}</small>
-          </Reveal>
-        </div>
-
-        <div className="about-github-wrap">
-          <Reveal delay={0.2}>
-            <GitHubActivity />
           </Reveal>
         </div>
       </div>

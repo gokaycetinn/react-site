@@ -14,11 +14,13 @@ import {
   GlobeHemisphereWest,
   ImageBroken,
   Notebook,
+  SlidersHorizontal,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { additionalProjects, featuredProjects } from "../data";
 import { useApp } from "./AppProvider";
 import { Reveal } from "./MotionPrimitives";
+import ProjectDrawer, { type DrawerProject } from "./ProjectDrawer";
 
 const projectIcons = {
   brain: Brain,
@@ -144,6 +146,7 @@ export default function Projects() {
   const { language, t } = useApp();
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [selectedProject, setSelectedProject] = useState<DrawerProject | null>(null);
   const reduceMotion = useReducedMotion();
 
   const projects = useMemo(
@@ -172,12 +175,12 @@ export default function Projects() {
     []
   );
 
-  const move = (delta) => {
+  const move = (delta: number) => {
     setDirection(delta);
     setActiveIndex((current) => (current + delta + projects.length) % projects.length);
   };
 
-  const selectProject = (index) => {
+  const selectProject = (index: number) => {
     setDirection(index >= activeIndex ? 1 : -1);
     setActiveIndex(index);
   };
@@ -203,7 +206,11 @@ export default function Projects() {
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -18 }}
               transition={{ duration: reduceMotion ? 0 : 0.38, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="project-visual-board">
+              <div
+                className="project-visual-board cursor-pointer"
+                onClick={() => setSelectedProject(project as DrawerProject)}
+                title={t.caseStudy}
+              >
                 <ProjectVisual
                   project={project}
                   language={language}
@@ -225,6 +232,15 @@ export default function Projects() {
                   ))}
                 </ul>
                 <div className="project-links">
+                  <button
+                    type="button"
+                    className="button button-primary case-study-btn"
+                    onClick={() => setSelectedProject(project as DrawerProject)}
+                  >
+                    <SlidersHorizontal size={17} weight="bold" />
+                    <span>{t.caseStudy}</span>
+                  </button>
+
                   {project.links.map((link) => {
                     const Icon = linkIcons[link.type] || ArrowUpRight;
                     return (
@@ -236,7 +252,7 @@ export default function Projects() {
                         className="text-link"
                       >
                         <Icon size={19} weight={link.type === "github" ? "fill" : "bold"} aria-hidden="true" />
-                        <span>{t[link.labelKey]}</span>
+                        <span>{t[link.labelKey] || link.labelKey}</span>
                         <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
                       </a>
                     );
@@ -254,6 +270,11 @@ export default function Projects() {
               </article>
             </motion.div>
           </AnimatePresence>
+
+          <ProjectDrawer
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
 
           <div className="project-index-header">
             <p>{t.projectIndex}</p>

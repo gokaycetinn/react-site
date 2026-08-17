@@ -28,12 +28,16 @@ function ExperienceSheet({ experience, index, language, t }) {
       } as React.CSSProperties}
     >
       <header className="experience-sheet-header">
-        <div className="company-logo experience-sheet-logo">
+        <div
+          className={`company-logo experience-sheet-logo ${
+            experience.company.toLowerCase().includes("sports") ? "logo-sports-digitale" : ""
+          }`}
+        >
           <Image
             src={experience.logo}
             alt={`${experience.company} logo`}
             fill
-            sizes="132px"
+            sizes="144px"
           />
         </div>
 

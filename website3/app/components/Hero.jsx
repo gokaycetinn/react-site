@@ -1,26 +1,20 @@
 "use client";
 
-import { useRef } from "react";
-import { ArrowRight, GithubLogo, DownloadSimple } from "@phosphor-icons/react";
+import Image from "next/image";
+import { ArrowRight, GithubLogo } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import { useApp } from "./AppProvider";
-import { MagneticLink } from "./MotionPrimitives";
-import TerminalWindow from "./TerminalWindow";
+import { HeroPaths, MagneticLink } from "./MotionPrimitives";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Hero() {
-  const { language, t } = useApp();
+  const { t } = useApp();
   const reduceMotion = useReducedMotion();
-  const mediaRef = useRef(null);
-
-  const updateSpotlight = (event) => {
-    if (!mediaRef.current) return;
-    const bounds = mediaRef.current.getBoundingClientRect();
-    mediaRef.current.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
-    mediaRef.current.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
-  };
 
   return (
     <section id="home" className="hero-section">
+      <HeroPaths />
       <div className="hero-shell section-shell">
         <motion.div
           className="hero-copy"
@@ -82,27 +76,24 @@ export default function Hero() {
               <GithubLogo size={19} weight="fill" aria-hidden="true" />
               <span>{t.heroSecondary}</span>
             </MagneticLink>
-            <a
-              href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/cv.pdf`}
-              className="button button-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <DownloadSimple size={19} weight="bold" aria-hidden="true" />
-              <span>{t.downloadCV}</span>
-            </a>
           </motion.div>
         </motion.div>
 
         <motion.figure
-          ref={mediaRef}
-          className="hero-media-stage"
-          initial={reduceMotion ? false : { opacity: 0, scale: 0.94, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="hero-visual"
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.94, rotate: 1.8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          onPointerMove={updateSpotlight}
         >
-          <TerminalWindow language={language} label={t.heroVisualAlt} />
+          <div className="hero-image-frame">
+            <Image
+              src={`${basePath}/images/hero-systems-sculpture.png`}
+              alt={t.heroVisualAlt}
+              fill
+              priority
+              sizes="(max-width: 767px) 92vw, 48vw"
+            />
+          </div>
         </motion.figure>
       </div>
     </section>

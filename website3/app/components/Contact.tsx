@@ -44,11 +44,11 @@ export default function Contact() {
         </Reveal>
 
         <Reveal className="contact-premium-network" delay={0.08}>
-          <a href="tel:+905356483343">
+          <a href="tel:+905356483342">
             <Phone size={22} weight="duotone" aria-hidden="true" />
             <span>
               <small>{t.phoneLabel}</small>
-              <strong>+90 535 648 33 43</strong>
+              <strong>+90 535 648 33 42</strong>
             </span>
           </a>
           <a href="https://github.com/gokaycetinn" target="_blank" rel="noreferrer">
