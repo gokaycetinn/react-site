@@ -94,7 +94,7 @@ echo "Site should be available at: https://gokaycetinn.github.io/Website/"
 
 # Çalıştırma:
 # Proje köküne geç
-# cd /Users/gokay/Desktop/Gokay/MyWebsite
+# cd /Users/gokay/Desktop/Gokay/react-site
 
 # Scripti çalıştır
 # ./deploy-website.sh

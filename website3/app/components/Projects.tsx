@@ -206,6 +206,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<DrawerProject | null>(null);
   const reduceMotion = useReducedMotion();
   const indexRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const hasProjectInteraction = useRef(false);
 
   const projects = useMemo(
     () => [
@@ -234,6 +235,8 @@ export default function Projects() {
   );
 
   useEffect(() => {
+    if (!hasProjectInteraction.current) return;
+
     indexRefs.current[activeIndex]?.scrollIntoView({
       behavior: reduceMotion ? "auto" : "smooth",
       block: "nearest",
@@ -242,11 +245,13 @@ export default function Projects() {
   }, [activeIndex, reduceMotion]);
 
   const move = (delta: number) => {
+    hasProjectInteraction.current = true;
     setDirection(delta);
     setActiveIndex((current) => (current + delta + projects.length) % projects.length);
   };
 
   const selectProject = (index: number) => {
+    hasProjectInteraction.current = true;
     setDirection(index >= activeIndex ? 1 : -1);
     setActiveIndex(index);
   };
