@@ -10,7 +10,6 @@ import {
   ArrowUpRight,
   CheckCircle,
   Cpu,
-  Lightbulb,
 } from "@phosphor-icons/react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useApp } from "./AppProvider";
@@ -32,10 +31,19 @@ export interface DrawerProject {
   tech: string[];
   links?: Array<{ type: string; labelKey: string; href: string }>;
   caseStudy?: {
-    problem: { tr: string; en: string };
-    solution: { tr: string; en: string };
+    overview: { tr: string; en: string };
     architecture: { tr: string; en: string };
     highlights: { tr: string[]; en: string[] };
+    sequence?: {
+      title: { tr: string; en: string };
+      description: { tr: string; en: string };
+      items: Array<{
+        title: { tr: string; en: string };
+        image: string;
+        imageAlt: { tr: string; en: string };
+        path: string;
+      }>;
+    };
   };
 }
 
@@ -135,24 +143,35 @@ export default function ProjectDrawer({ project, onClose }: ProjectDrawerProps) 
               {/* Case Study Details */}
               {project.caseStudy && (
                 <>
-                  {/* Problem & Solution */}
-                  <div className="drawer-section drawer-grid-2">
-                    <div className="drawer-card">
-                      <div className="drawer-card-label">
-                        <Lightbulb size={18} weight="duotone" />
-                        <span>{language === "tr" ? "Problem / İhtiyaç" : "The Challenge"}</span>
-                      </div>
-                      <p>{project.caseStudy.problem[language]}</p>
-                    </div>
-
-                    <div className="drawer-card">
-                      <div className="drawer-card-label">
-                        <CheckCircle size={18} weight="duotone" />
-                        <span>{language === "tr" ? "Geliştirilen Çözüm" : "The Solution"}</span>
-                      </div>
-                      <p>{project.caseStudy.solution[language]}</p>
-                    </div>
+                  {/* Project overview */}
+                  <div className="drawer-section drawer-overview">
+                    <p>{project.caseStudy.overview[language]}</p>
                   </div>
+
+                  {project.caseStudy.sequence && (
+                    <div className="drawer-section drawer-sequence">
+                      <h3 className="drawer-section-title">{project.caseStudy.sequence.title[language]}</h3>
+                      <p className="drawer-sequence-copy">{project.caseStudy.sequence.description[language]}</p>
+                      <div className="drawer-sequence-grid">
+                        {project.caseStudy.sequence.items.map((item) => (
+                          <article className="drawer-sequence-card" key={item.path}>
+                            <div className="drawer-sequence-media">
+                              <Image
+                                src={item.image}
+                                alt={item.imageAlt[language]}
+                                fill
+                                sizes="(max-width: 767px) 68vw, 180px"
+                              />
+                            </div>
+                            <div className="drawer-sequence-meta">
+                              <strong>{item.title[language]}</strong>
+                              <code>{item.path}</code>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Architecture & Engineering */}
                   <div className="drawer-section">

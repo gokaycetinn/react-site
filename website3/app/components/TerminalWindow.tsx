@@ -378,7 +378,7 @@ const menuItems = [
           <span className="terminal-control terminal-control-minimize" />
           <span className="terminal-control terminal-control-expand" />
         </div>
-        <span className="terminal-title">gokay — zsh (interactive)</span>
+        <span className="terminal-title">gokay - zsh (interactive)</span>
         <span className="terminal-location">~/portfolio</span>
       </div>
 

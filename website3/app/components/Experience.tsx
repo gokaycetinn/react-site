@@ -27,7 +27,11 @@ function ExperienceSheet({ experience, index, language, t }) {
         opacity: reduceMotion ? 1 : opacity,
       } as React.CSSProperties}
     >
-      <header className="experience-sheet-header">
+      <header
+        className={`experience-sheet-header ${
+          experience.roles ? "experience-sheet-header-grouped" : ""
+        }`}
+      >
         <div
           className={`company-logo experience-sheet-logo ${
             experience.company.toLowerCase().includes("sports") ? "logo-sports-digitale" : ""
@@ -42,14 +46,43 @@ function ExperienceSheet({ experience, index, language, t }) {
         </div>
 
         <div className="experience-sheet-heading">
-          <div className="experience-sheet-meta">
-            <p>{experience.role[language]}</p>
-            {experience.ongoing ? <span className="status-label">{t.ongoing}</span> : null}
-          </div>
-          <h3>{experience.company}</h3>
-          <time>{experience.date[language]}</time>
+          {experience.roles ? (
+            <>
+              <h3>{experience.company}</h3>
+              <time>{experience.date[language]}</time>
+            </>
+          ) : (
+            <>
+              <div className="experience-sheet-meta">
+                <p>{experience.role[language]}</p>
+                {experience.ongoing ? <span className="status-label">{t.ongoing}</span> : null}
+              </div>
+              <h3>{experience.company}</h3>
+              <time>{experience.date[language]}</time>
+            </>
+          )}
         </div>
       </header>
+
+      {experience.roles ? (
+        <div
+          className="experience-role-timeline"
+          aria-label={`${experience.company} ${language === "tr" ? "rolleri" : "roles"}`}
+        >
+          {experience.roles.map((role) => (
+            <article className="experience-role-item" key={role.date.tr}>
+              <div className="experience-role-heading">
+                <div>
+                  <h4>{role.title[language]}</h4>
+                  <p>{role.employmentType[language]}</p>
+                </div>
+                {role.ongoing ? <span className="status-label">{t.ongoing}</span> : null}
+              </div>
+              <time>{role.date[language]}</time>
+            </article>
+          ))}
+        </div>
+      ) : null}
 
       <p className="experience-sheet-summary">{experience.summary[language]}</p>
 

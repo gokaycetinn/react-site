@@ -196,13 +196,9 @@ export const featuredProjects = [
       },
     ],
     caseStudy: {
-      problem: {
-        tr: "Mutfakta mevcut olan rastgele malzemeleri israf etmeden lezzetli öğünlere dönüştürmek ve kişisel beslenme tercihlerine uygun pratik tarifler bulmak günlük bir problemdir.",
-        en: "Transforming random kitchen ingredients into delicious meals without waste while matching personal dietary preferences is a daily challenge.",
-      },
-      solution: {
-        tr: "React Native ile sıfırdan inşa edilen AI Chef, seçilen malzemelere göre anlık prompt mühendisliği ile dinamik tarif ve porsiyon hesaplaması yapan modern bir mobil çözümdür.",
-        en: "Engineered with React Native, AI Chef uses real-time prompt engineering to generate dynamic recipes and portion calculations tailored to selected ingredients.",
+      overview: {
+        tr: "AI Chef, kullanıcıların mutfaktaki mevcut malzemeleri değerlendirmesini ve beslenme tercihlerine uygun tariflere hızla ulaşmasını sağlayan yapay zekâ destekli bir mobil üründür. React Native ile sıfırdan geliştirilen uygulama, seçilen malzemeleri anlık prompt mühendisliğiyle işleyerek kişiselleştirilmiş tarifler ve dinamik porsiyon hesaplamaları üretir.",
+        en: "AI Chef is an AI-powered mobile product that helps users make the most of available ingredients and quickly find recipes suited to their dietary preferences. Built from the ground up with React Native, it processes selected ingredients through real-time prompt engineering to generate personalized recipes and dynamic portion calculations.",
       },
       architecture: {
         tr: "React Native mobil istemcisi, LLM API entegrasyonu, yerel Async Storage favori mimarisi ve dinamik porsiyon ölçekleme motoru.",
@@ -231,7 +227,11 @@ export const featuredProjects = [
       en: "Real-time vehicle detection and traffic density analytics pipeline powered by a custom-trained YOLOv8 model on the UA-DETRAC dataset.",
     },
     image: `${basePath}/images/cnn-traffic.webp`,
-    gallery: [`${basePath}/images/cnn-traffic.webp`],
+    gallery: [
+      `${basePath}/images/cnn-traffic.webp`,
+      `${basePath}/images/cnn-traffic-detection.png`,
+    ],
+    galleryMode: "browser",
     imageAlt: { tr: "Araç tespit ve trafik analizi arayüzü", en: "Vehicle detection and traffic analysis interface" },
     tech: ["Python", "YOLOv8", "OpenCV", "Streamlit"],
     links: [
@@ -247,13 +247,9 @@ export const featuredProjects = [
       },
     ],
     caseStudy: {
-      problem: {
-        tr: "Değişken hava koşulları, gece görüşü ve yoğun trafik senaryolarında araçların gerçek zamanlı tespit edilmesi ve akış istatistiklerinin çıkarılması yüksek hesaplama verimliliği gerektirir.",
-        en: "Detecting vehicles and calculating density statistics in real time across challenging weather and lighting conditions requires optimized computation.",
-      },
-      solution: {
-        tr: "UA-DETRAC veri kümesiyle eğitilen YOLOv8 derin öğrenme mimarisi OpenCV kare işleme hattıyla birleştirilerek Streamlit Cloud üzerinde canlı analiz paneline dönüştürüldü.",
-        en: "A custom-trained YOLOv8 neural network combined with an OpenCV frame processing pipeline, deployed as an interactive live dashboard on Streamlit Cloud.",
+      overview: {
+        tr: "Bu sistem, değişken hava ve ışık koşullarında gerçek zamanlı araç tespiti yaparak trafik akışını ölçmek için geliştirildi. UA-DETRAC veri kümesiyle eğitilen YOLOv8 modeli, optimize edilmiş OpenCV kare işleme hattıyla birleştirildi ve sonuçların canlı izlenebildiği etkileşimli bir Streamlit Cloud uygulamasına dönüştürüldü.",
+        en: "This system was developed to detect vehicles in real time and measure traffic flow across changing weather and lighting conditions. A YOLOv8 model trained on the UA-DETRAC dataset was combined with an optimized OpenCV frame-processing pipeline and delivered through an interactive Streamlit Cloud application for live analysis.",
       },
       architecture: {
         tr: "YOLOv8 nesne tanıma modeli, OpenCV video pipeline optimizasyonu, Streamlit interaktif web paneli ve bulut dağıtımı.",
@@ -297,13 +293,9 @@ export const featuredProjects = [
       },
     ],
     caseStudy: {
-      problem: {
-        tr: "Kullanıcıların beslenme ve fitness hedeflerine yönelik uzmanlaşmış yapay zekâ yönlendirmelerini, internet kesintilerinden etkilenmeyen hızlı bir mobil arayüzde bir araya getirmek.",
-        en: "Delivering domain-specialized AI guidance (diet & fitness) in a single responsive mobile experience with offline resilience.",
-      },
-      solution: {
-        tr: "Flutter ile geliştirilen; Firebase Remote Config üzerinden dinamik persona enjeksiyonu yapan, Hive NoSQL ile yerel sohbetleri saklayan ve Cubit ile temiz state yöneten bir mobil mimari kuruldu.",
-        en: "Built a Flutter app utilizing Firebase Remote Config for dynamic persona injection, Hive NoSQL for offline-first chat caching, and Cubit for robust state management.",
+      overview: {
+        tr: "Wellness AI, beslenme ve fitness hedeflerine göre uzmanlaşmış yapay zekâ koçlarını tek bir hızlı mobil deneyimde bir araya getirir. Flutter tabanlı mimari, Firebase Remote Config üzerinden dinamik koç profilleri sunarken Hive NoSQL ile sohbet geçmişini çevrimdışı saklar ve Cubit ile uygulama durumunu modüler biçimde yönetir.",
+        en: "Wellness AI brings specialized nutrition and fitness coaches into one responsive mobile experience. Its Flutter architecture delivers dynamic coach profiles through Firebase Remote Config, stores chat history offline with Hive NoSQL, and manages application state through a modular Cubit structure.",
       },
       architecture: {
         tr: "Flutter UI katmanı, BLoC/Cubit durum yönetimi, Firebase AI & Remote Config, Hive NoSQL yerel depolama.",
@@ -337,15 +329,12 @@ export const additionalProjects = [
     tech: ["Python", "Spark", "Kafka", "MongoDB"],
     href: "https://github.com/gokaycetinn/Product-Recommendation-System",
     image: `${basePath}/images/recommendation-system.webp`,
+    galleryMode: "browser",
     icon: "brain",
     caseStudy: {
-      problem: {
-        tr: "Yüksek trafikli e-ticaret sistemlerinde anlık kullanıcı tıklama ve satın alma hareketlerine milisaniyeler içinde kişiselleştirilmiş öneriler sunabilmek.",
-        en: "Delivering real-time personalized recommendations to high-throughput e-commerce streams within millisecond latency.",
-      },
-      solution: {
-        tr: "Kafka ile kullanıcı olay akışları toplandı, Spark Streaming ile collaborative filtering algoritmaları çalıştırıldı ve MongoDB'de anlık sorgulanabilir öneriler saklandı.",
-        en: "Ingested event streams via Kafka, processed collaborative filtering models with Spark Streaming, and indexed real-time recommendations into MongoDB.",
+      overview: {
+        tr: "Product Recommendation System, yüksek trafikli e-ticaret uygulamalarında kullanıcı davranışlarını gerçek zamanlı işleyerek kişiselleştirilmiş ürün önerileri üretir. Kullanıcı olayları Kafka ile toplanır, Spark Streaming üzerinde collaborative filtering algoritmalarıyla işlenir ve düşük gecikmeyle sorgulanabilen öneriler MongoDB'de saklanır.",
+        en: "Product Recommendation System processes user behavior in real time to generate personalized suggestions for high-traffic commerce applications. Events are ingested with Kafka, evaluated by collaborative filtering algorithms in Spark Streaming, and stored in MongoDB for low-latency retrieval.",
       },
       architecture: {
         tr: "Kafka Event Streaming -> Spark Dağıtık ML Hattı -> MongoDB NoSQL -> REST API Öneri Servisi.",
@@ -366,118 +355,154 @@ export const additionalProjects = [
     },
   },
   {
-    slug: "plant-disease-detection",
-    title: "Plant Disease Detection",
-    category: { tr: "Derin Öğrenme & Tarım Teknolojileri", en: "Deep Learning & Agritech" },
+    slug: "data-mining-project",
+    title: "Data Mining Project",
+    category: { tr: "Veri Madenciliği & Makine Öğrenmesi", en: "Data Mining & Machine Learning" },
     description: {
-      tr: "Bitki yapraklarındaki hastalıkları CNN tabanlı derin öğrenme modeliyle sınıflandıran ve çiftçiler için erken teşhis imkanı sunan yapay zekâ sistemi.",
-      en: "Deep learning system utilizing CNN architectures to classify plant leaf diseases and provide early diagnosis for agricultural health.",
+      tr: "Tahıl verimi sınıflandırması için farklı makine öğrenmesi algoritmalarını ortak metrikler, ROC eğrileri ve karışıklık matrisi üzerinden karşılaştıran Python projesi.",
+      en: "A Python data mining project comparing machine learning algorithms for grain yield classification through shared metrics, ROC curves, and confusion matrices.",
     },
-    tech: ["Python", "TensorFlow", "CNN", "OpenCV"],
-    href: "https://github.com/gokaycetinn/Plant-Disease-Detection",
-    image: `${basePath}/images/plant-disease.webp`,
-    icon: "leaf",
+    tech: ["Python", "scikit-learn", "Pandas", "XGBoost"],
+    href: "https://github.com/gokaycetinn/Data-Mining-Project",
+    image: `${basePath}/images/data.png`,
+    galleryMode: "browser",
+    imageAlt: {
+      tr: "Tahıl verimi sınıflandırma modellerinin ROC eğrileri ve karışıklık matrisi",
+      en: "ROC curves and confusion matrix for grain yield classification models",
+    },
+    icon: "chart",
     caseStudy: {
-      problem: {
-        tr: "Tarımsal üretimde yaprak hastalıklarının geç teşhis edilmesi ciddi verim kaybına yol açmaktadır; erken ve otomatik teşhis kritik önemdedir.",
-        en: "Late detection of agricultural plant diseases causes severe yield losses, requiring rapid and automated visual diagnosis.",
-      },
-      solution: {
-        tr: "Konvolüsyonel Sinir Ağları (CNN) eğitilerek yaprak fotoğraflarından hastalık türlerini yüksek doğrulukla tespit eden sınıflandırma modeli geliştirildi.",
-        en: "Trained Convolutional Neural Networks (CNN) to classify diverse plant leaf diseases with high accuracy from standard field imagery.",
+      overview: {
+        tr: "Data Mining Project, tahıl verimi sınıflarını tahmin etmek için on farklı sınıflandırma algoritmasını aynı veri hazırlama ve değerlendirme hattında karşılaştırır. Veri temizleme, ölçekleme ve özellik seçimi adımlarından geçen modeller; doğruluk, F1, precision, recall, MCC ve AUC gibi ortak ölçütlerle analiz edilir.",
+        en: "Data Mining Project compares ten classification algorithms for predicting grain yield classes within a shared data preparation and evaluation pipeline. After data cleaning, scaling, and feature selection, the models are analyzed using common measures including accuracy, F1, precision, recall, MCC, and AUC.",
       },
       architecture: {
-        tr: "Görüntü ön işleme ve veri artırma (OpenCV) -> CNN Derin Öğrenme Modeli -> Sınıflandırma ve Doğruluk Raporlama.",
-        en: "Data augmentation & preprocessing (OpenCV) -> Custom CNN Deep Learning Model -> Classification & Confidence Output.",
+        tr: "Excel veri kümesi -> Pandas veri temizleme -> StandardScaler -> SelectKBest ve RFE -> sınıflandırma modelleri -> ROC, AUC ve karışıklık matrisi raporları.",
+        en: "Excel dataset -> Pandas data cleaning -> StandardScaler -> SelectKBest and RFE -> classification models -> ROC, AUC, and confusion matrix reports.",
       },
       highlights: {
         tr: [
-          "Farklı bitki türlerinde yüksek doğruluklu hastalık sınıflandırması",
-          "Veri artırma (data augmentation) ile dayanıklı model performansı",
-          "Erken teşhis odaklı pratik teşhis pipeline'ı",
+          "On sınıflandırma modelini aynı değerlendirme hattında karşılaştırma",
+          "Tüm özellikler ile seçilen özelliklerin sonuçlarını ayrı analiz etme",
+          "ROC grafikleri, karışıklık matrisleri ve Excel raporları üretme",
         ],
         en: [
-          "High-accuracy disease classification across multiple plant species",
-          "Robust model generalization via extensive data augmentation",
-          "Fast inference pipeline designed for early diagnosis",
+          "Comparison of ten classifiers within one evaluation pipeline",
+          "Separate analysis of all features and selected feature subsets",
+          "ROC charts, confusion matrices, and Excel report generation",
         ],
       },
     },
   },
   {
-    slug: "spotify-playlist-ai",
-    title: "Spotify Playlist AI",
-    category: { tr: "Yapay Zekâ & Müzik Analitiği", en: "AI & Music Analytics" },
+    slug: "turkish-legal-rag",
+    title: "Turkish Legal RAG",
+    category: { tr: "Doğal Dil İşleme & RAG", en: "Natural Language Processing & RAG" },
     description: {
-      tr: "Kullanıcının anlık ruh haline, müzik zevkine ve Spotify dinleme geçmişine göre akıllı çalma listeleri oluşturan Python ve Spotify Web API entegrasyonu.",
-      en: "Intelligent playlist curation engine utilizing Spotify Web API and sentiment analysis to craft mood-tailored playlists.",
+      tr: "BM25 ve yoğun aramayı, fine-tuned E5 embeddings, BGE reranking ve Trendyol LLM ile birleştiren kaynak gösterimli Türkçe hukuk soru-cevap sistemi.",
+      en: "A citation-grounded Turkish legal QA system combining BM25, dense E5 retrieval, BGE reranking, and a fine-tuned Trendyol LLM.",
     },
-    tech: ["Python", "Spotify API", "NLP", "Flask"],
-    href: "https://github.com/gokaycetinn/Spotify-Playlist-AI",
-    image: `${basePath}/images/spotify-ai.webp`,
-    icon: "music",
+    tech: ["Python", "Hybrid RAG", "E5 & BGE", "Trendyol LLM"],
+    href: "https://github.com/gokaycetinn/NLP-Turkish-Legal-Rag",
+    image: `${basePath}/images/nlp.png`,
+    galleryMode: "browser",
+    imageAlt: {
+      tr: "Türkçe Hukuki RAG sisteminin soru, yanıt ve kaynak maddeler arayüzü",
+      en: "Question, answer, and cited source interface of the Turkish Legal RAG system",
+    },
+    icon: "brain",
     caseStudy: {
-      problem: {
-        tr: "Milyonlarca parça arasından kullanıcının anlık ruh haline ve müzik zevkine tam uyan çalma listelerini manuel olarak derlemek zahmetlidir.",
-        en: "Manually curating playlists from millions of tracks to match fleeting moods and specific acoustic preferences is tedious.",
-      },
-      solution: {
-        tr: "Spotify Web API'sinin akustik ses özelliklerini (tempo, enerji, valans) NLP tabanlı ruh hali analiziyle eşleştiren akıllı bir kürasyon motoru geliştirildi.",
-        en: "Engineered a smart curation engine mapping Spotify audio features (tempo, energy, valence) to NLP mood embeddings.",
+      overview: {
+        tr: "Turkish Legal RAG, Türk hukuku alanındaki sorulara ilgili mevzuatı bularak açık kaynaklarla yanıt vermek için geliştirilmiş akademik bir doğal dil işleme sistemidir. Hibrit arama, yeniden sıralama ve alan uyarlamalı üretim katmanları; yanlış belge erişimini ve kaynaksız yanıt üretimini azaltmak üzere birlikte çalışır.",
+        en: "Turkish Legal RAG is an academic natural language processing system designed to answer questions about Turkish law by retrieving relevant legislation and returning explicit citations. Hybrid retrieval, reranking, and domain-adapted generation work together to reduce incorrect document retrieval and unsupported answers.",
       },
       architecture: {
-        tr: "Spotify OAuth 2.0 Doğrulama -> Akustik Özellik Çıkarımı -> Ruh Hali Eşleme Algoritması -> Otomatik Çalma Listesi Üretimi.",
-        en: "Spotify OAuth 2.0 Auth -> Audio Feature Extraction -> Mood Matching Algorithm -> Automatic Playlist Generation.",
+        tr: "BM25 ve dense E5 retrieval -> Reciprocal Rank Fusion -> fine-tuned BGE cross-encoder reranker -> Trendyol 7B QLoRA/SFT generator -> kaynak gösterimli hukuki yanıt.",
+        en: "BM25 and dense E5 retrieval -> Reciprocal Rank Fusion -> fine-tuned BGE cross-encoder reranker -> Trendyol 7B QLoRA/SFT generator -> citation-grounded legal answer.",
       },
       highlights: {
         tr: [
-          "Spotify OAuth 2.0 entegrasyonu ile doğrudan kullanıcı hesabına liste aktarımı",
-          "Valans, dans edilebilirlik ve enerji parametreleriyle hassas müzik filtreleme",
-          "Kullanıcı dostu arayüz ve anlık önizleme",
+          "Türkçe hukuk alanına odaklı kaynak gösterimli soru-cevap akışı",
+          "BM25 ve dense retrieval sonuçlarını birleştiren hibrit arama",
+          "Sistem bileşenlerini ayrı ölçen ablation değerlendirmesi",
         ],
         en: [
-          "Direct playlist creation into user accounts via Spotify OAuth 2.0",
-          "Granular acoustic filtering by valence, danceability, and energy",
-          "Instant playback previews and clean interface",
+          "Citation-grounded question answering focused on Turkish law",
+          "Hybrid retrieval combining BM25 and dense search results",
+          "Ablation evaluation measuring each system component",
         ],
       },
     },
   },
   {
-    slug: "habit-tracker",
-    title: "Habit Tracker",
-    category: { tr: "Üretkenlik & Mobil Arayüz", en: "Productivity & Mobile UI" },
+    slug: "blackout",
+    title: "BLACKOUT",
+    category: { tr: "Oyun Geliştirme & Yapay Zekâ", en: "Game Development & AI" },
     description: {
-      tr: "Kullanıcıların günlük alışkanlıklarını takip etmelerini sağlayan, minimalist arayüz ve yerel veri saklama odaklı React Native mobil uygulaması.",
-      en: "Minimalist habit tracking mobile application built with React Native, emphasizing local storage and smooth user workflows.",
+      tr: "Godot 4 ile geliştirilen; dinamik düşman yapay zekâsı, gizlilik, kaynak yönetimi ve atmosferik keşfi birleştiren 2D top-down survival horror oyunu.",
+      en: "A 2D top-down survival horror game built with Godot 4, combining dynamic enemy AI, stealth, resource management, and atmospheric exploration.",
     },
-    tech: ["React Native", "TypeScript", "Local Storage"],
-    href: "https://github.com/gokaycetinn/Habit-Tracker",
-    image: `${basePath}/images/habit-tracker.webp`,
-    icon: "check",
+    tech: ["Godot 4", "GDScript", "Game AI", "2D"],
+    href: "https://github.com/gokaycetinn/Blackout",
+    image: `${basePath}/images/blackout.png`,
+    gallery: [
+      `${basePath}/images/blackout.png`,
+      `${basePath}/images/actions0081.png`,
+      `${basePath}/images/actions0185.png`,
+      `${basePath}/images/actions0217.png`,
+    ],
+    galleryMode: "browser",
+    imageAlt: {
+      tr: "BLACKOUT oyun menüsü ve Queen Spider boss karakteri",
+      en: "BLACKOUT game menu and Queen Spider boss character",
+    },
+    icon: "brain",
     caseStudy: {
-      problem: {
-        tr: "Karmaşık ve reklam dolu alışkanlık takip uygulamaları kullanıcıların odaklanmasını zorlaştırır; sade ve hızlı bir arayüze ihtiyaç vardır.",
-        en: "Bloated, ad-heavy habit apps create friction; users need an ultra-fast, minimal tool for daily consistency.",
-      },
-      solution: {
-        tr: "React Native ve TypeScript ile sıfır dikkat dağıtıcı içeren, çevrimdışı çalışan ve serileri görselleştiren hafif bir mobil uygulama geliştirildi.",
-        en: "Built a distraction-free, offline-first mobile app using React Native and TypeScript to visualize daily consistency streaks.",
+      overview: {
+        tr: "BLACKOUT, uzak bir yeraltı araştırma tesisindeki ani güç kesintisini inceleyen bir müfettişi merkeze alır. Oyuncu karanlık koridorlarda jeneratörleri yeniden etkinleştirirken pil, mühimmat ve sağlık kitlerini yönetir; sese ve görünürlüğe tepki veren düşmanlardan saklanır ve tesisin derinliklerindeki Queen Spider boss ile yüzleşir.",
+        en: "BLACKOUT follows an Inspector investigating a sudden power failure at a remote underground research facility. While restoring generators in dark corridors, the player manages batteries, ammunition, and medkits, avoids enemies that react to noise and visibility, and confronts the Queen Spider boss deep inside the facility.",
       },
       architecture: {
-        tr: "React Native, TypeScript tip güvenliği, yerel Async Storage veritabanı ve mikro etkileşimler.",
-        en: "React Native client, TypeScript type safety, local Async Storage, and custom micro-animations.",
+        tr: "Godot 4 sahne ve node mimarisi, GDScript tabanlı düşman durum makineleri, ses ve görünürlük algılama sistemi, pil tüketimli el feneri, kaynak envanteri ve çok aşamalı boss dövüşü.",
+        en: "Godot 4 scene and node architecture, GDScript enemy state machines, noise and visibility detection, battery-powered flashlight, resource inventory, and multi-phase boss combat.",
       },
       highlights: {
         tr: [
-          "Minimalist ve akıcı kullanıcı deneyimi",
-          "Tamamen çevrimdışı ve gizlilik odaklı yerel veri saklama",
-          "Seri (streak) ve ilerleme görselleştirmeleri",
+          "Devriye, şüphe, araştırma, takip ve arama durumlarına geçen düşman yapay zekâsı",
+          "Pil, mühimmat, sağlık kiti ve jeneratör etkileşimlerini birleştiren kaynak yönetimi",
+          "Sağlık çubuğu, dinamik saldırı aşamaları ve çok kareli ölüm animasyonu bulunan Queen Spider boss",
         ],
         en: [
-          "Clean and distraction-free mobile UX",
-          "Fully offline, privacy-first local persistence",
-          "Visual consistency streaks and progress tracking",
+          "Enemy AI transitioning through patrol, suspicious, investigate, chase, and search states",
+          "Resource management combining batteries, ammunition, medkits, and generator interactions",
+          "Queen Spider boss with a health bar, dynamic combat phases, and a multi-frame death animation",
+        ],
+      },
+      sequence: {
+        title: { tr: "Queen Spider Ölüm Sekansı", en: "Queen Spider Death Sequence" },
+        description: {
+          tr: "Boss yenilgi animasyonu, aktif savaş duruşundan çöken ara kareye ve kıvrılmış son duruma kesintisiz biçimde ilerler.",
+          en: "The boss defeat animation moves from the active battle pose through a collapsing transition frame into the final curled state.",
+        },
+        items: [
+          {
+            title: { tr: "Aktif Savaş Durumu", en: "Active Battle State" },
+            image: `${basePath}/images/actions0081.png`,
+            imageAlt: { tr: "Aktif savaş durumundaki Queen Spider", en: "Queen Spider in the active battle state" },
+            path: "idle/actions0081.png",
+          },
+          {
+            title: { tr: "Çökme ve Hasar Durumu", en: "Collapsing and Hurt State" },
+            image: `${basePath}/images/actions0185.png`,
+            imageAlt: { tr: "Çöken Queen Spider animasyon karesi", en: "Queen Spider collapsing animation frame" },
+            path: "death/actions0185.png",
+          },
+          {
+            title: { tr: "Yenilmiş Son Durum", en: "Defeated Lifeless State" },
+            image: `${basePath}/images/actions0217.png`,
+            imageAlt: { tr: "Yenilmiş Queen Spider son animasyon karesi", en: "Queen Spider final defeated animation frame" },
+            path: "death/actions0217.png",
+          },
         ],
       },
     },
@@ -492,29 +517,64 @@ export const additionalProjects = [
     },
     tech: ["Web App", "Database", "SQL"],
     href: "https://github.com/gokaycetinn/Classroom-Reservation",
-    icon: "calendar",
-  },
-  {
-    slug: "digital-diary",
-    title: "Digital Diary",
-    category: { tr: "Masaüstü Veri Yönetimi", en: "Desktop Application" },
-    description: {
-      tr: "Kişisel notları, günlük kayıtlarını ve belgeleri düzenlemek için E4E stajında geliştirilmiş masaüstü yönetim yazılımı.",
-      en: "A desktop data organization tool for managing personal notes and logs, developed during E4E internship.",
+    image: `${basePath}/images/classroom1.png`,
+    gallery: [
+      `${basePath}/images/classroom1.png`,
+      `${basePath}/images/classroom2.png`,
+      `${basePath}/images/classroom3.png`,
+    ],
+    galleryMode: "browser",
+    imageAlt: {
+      tr: "Classroom Reservation uygulamasının giriş, rezervasyon ve haftalık program ekranları",
+      en: "Login, reservation, and weekly schedule screens of the Classroom Reservation app",
     },
-    tech: ["Python", "Desktop GUI", "Data Management"],
-    href: "https://github.com/gokaycetinn/Digital-Diary",
-    icon: "notebook",
+    icon: "calendar",
+    caseStudy: {
+      overview: {
+        tr: "Classroom Reservation, öğretim görevlileri ve yöneticiler için sınıf rezervasyon sürecini tek arayüzde toplar. Kullanıcılar dönem, sınıf, tarih ve saat seçerek talep oluşturabilir; rezervasyon durumlarını izleyebilir, haftalık sınıf programını görüntüleyebilir ve geri bildirim gönderebilir.",
+        en: "Classroom Reservation brings the classroom booking process for instructors and administrators into one interface. Users can choose a term, classroom, date, and time to create a request, track reservation statuses, view the weekly classroom schedule, and send feedback.",
+      },
+      architecture: {
+        tr: "Web istemcisi, rol tabanlı öğretim görevlisi ve yönetici erişimi, çakışma kontrollü rezervasyon akışı, SQL veri katmanı ve haftalık program görünümü.",
+        en: "Web client, role-based instructor and administrator access, conflict-aware reservation flow, SQL data layer, and weekly schedule view.",
+      },
+      highlights: {
+        tr: [
+          "Öğretim görevlisi ve yönetici için ayrı yetkilendirme akışları",
+          "Onaylandı, beklemede ve reddedildi durumlarıyla rezervasyon takibi",
+          "Haftalık program görünümü ile aydınlık ve karanlık tema desteği",
+        ],
+        en: [
+          "Separate authorization flows for instructors and administrators",
+          "Reservation tracking with approved, pending, and rejected states",
+          "Weekly schedule view with light and dark theme support",
+        ],
+      },
+    },
   },
 ];
 
 export const experiences = [
   {
     company: "SPORTS DIGITALE",
-    role: { tr: "Yazılım Mühendisi (Yarı Zamanlı)", en: "Software Engineer (Part-Time)" },
+    role: { tr: "Yazılım Mühendisi", en: "Software Engineer" },
     date: { tr: "Mart 2026 - Devam Ediyor", en: "Mar 2026 - Present" },
     ongoing: true,
     logo: `${basePath}/logos/sports-digitale.jpg`,
+    roles: [
+      {
+        title: { tr: "Yazılım Mühendisi", en: "Software Engineer" },
+        employmentType: { tr: "Tam Zamanlı", en: "Full-Time" },
+        date: { tr: "Ağustos 2026 - Devam Ediyor", en: "Aug 2026 - Present" },
+        ongoing: true,
+      },
+      {
+        title: { tr: "Yazılım Mühendisi", en: "Software Engineer" },
+        employmentType: { tr: "Yarı Zamanlı", en: "Part-Time" },
+        date: { tr: "Mart 2026 - Temmuz 2026", en: "Mar 2026 - Jul 2026" },
+        ongoing: false,
+      },
+    ],
     summary: {
       tr: "TÜBİTAK destekli yapay zekâ ve bilgisayarlı görü projelerinde gerçek zamanlı görüntü işleme ve spor analitiği algoritmaları geliştiriyorum.",
       en: "Developing real-time computer vision pipelines and sports analytics algorithms across TÜBİTAK-supported AI initiatives.",

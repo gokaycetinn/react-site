@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import {
   AppStoreLogo,
@@ -89,6 +89,63 @@ function ProjectVisual({ project, language, priority = false, reduceMotion }) {
     return <GraphicCover icon={project.icon} title={project.title[language]} />;
   }
 
+  if (project.galleryMode === "browser") {
+    const visibleGallery = project.gallery.slice(0, 4);
+
+    return (
+      <div className={`project-browser-gallery project-browser-gallery-${visibleGallery.length}`}>
+        {visibleGallery.map((src, index) => (
+          <motion.div
+            key={src}
+            className={`browser-shot browser-shot-${index + 1}`}
+            initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: reduceMotion ? 0 : index * 0.07, duration: reduceMotion ? 0 : 0.44 }}
+          >
+            <div className="browser-shot-bar" aria-hidden="true">
+              <GlobeHemisphereWest size={15} weight="bold" />
+              <span>{project.title[language]}</span>
+              <ArrowUpRight size={14} weight="bold" />
+            </div>
+            <div className="browser-shot-media">
+              <ProjectMedia
+                src={src}
+                alt={`${project.imageAlt[language]} ${index + 1}`}
+                priority={priority && index === 0}
+                fit="contain"
+                sizes="(max-width: 767px) 82vw, 44vw"
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    );
+  }
+
+  if (project.galleryMode === "landscape" && project.gallery.length > 1) {
+    return (
+      <div className={`project-landscape-gallery project-landscape-gallery-${Math.min(project.gallery.length, 3)}`}>
+        {project.gallery.map((src, index) => (
+          <motion.div
+            key={src}
+            className={`landscape-shot landscape-shot-${index + 1}`}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: reduceMotion ? 0 : index * 0.06, duration: reduceMotion ? 0 : 0.42 }}
+          >
+            <ProjectMedia
+              src={src}
+              alt={`${project.imageAlt[language]} ${index + 1}`}
+              priority={priority && index === 0}
+              fit="contain"
+              sizes="(max-width: 767px) 86vw, 46vw"
+            />
+          </motion.div>
+        ))}
+      </div>
+    );
+  }
+
   if (project.gallery.length > 1) {
     return (
       <div className="project-device-gallery">
@@ -137,7 +194,7 @@ function ProjectThumbnail({ project }) {
 
   return (
     <div className="project-thumbnail-image">
-      <Image src={project.gallery[0]} alt="" fill sizes="180px" />
+      <Image src={project.gallery[0]} alt="" fill sizes="(max-width: 767px) 154px, 184px" />
     </div>
   );
 }
@@ -148,6 +205,7 @@ export default function Projects() {
   const [direction, setDirection] = useState(1);
   const [selectedProject, setSelectedProject] = useState<DrawerProject | null>(null);
   const reduceMotion = useReducedMotion();
+  const indexRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const projects = useMemo(
     () => [
@@ -158,11 +216,11 @@ export default function Projects() {
       ...additionalProjects.map((project) => ({
         ...project,
         title: { tr: project.title, en: project.title },
-        imageAlt: {
+        imageAlt: project.imageAlt || {
           tr: `${project.title} proje arayüzü`,
           en: `${project.title} project interface`,
         },
-        gallery: project.image ? [project.image] : [],
+        gallery: project.gallery || (project.image ? [project.image] : []),
         links: [
           {
             type: "github",
@@ -174,6 +232,14 @@ export default function Projects() {
     ],
     []
   );
+
+  useEffect(() => {
+    indexRefs.current[activeIndex]?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeIndex, reduceMotion]);
 
   const move = (delta: number) => {
     setDirection(delta);
@@ -289,6 +355,9 @@ export default function Projects() {
             {projects.map((item, index) => (
               <button
                 key={item.slug}
+                ref={(node) => {
+                  indexRefs.current[index] = node;
+                }}
                 type="button"
                 role="tab"
                 aria-selected={activeIndex === index}
