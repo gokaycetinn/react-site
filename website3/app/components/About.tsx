@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import {
-  GraduationCap,
   MapPinLine,
   Stack,
 } from "@phosphor-icons/react";
+import universityLogo from "../../public/logos/Çankaya_Üniversitesi_logo.png";
 import { useApp } from "./AppProvider";
 import { Reveal } from "./MotionPrimitives";
 import GitHubActivity from "./GitHubActivity";
@@ -28,14 +29,21 @@ export default function About() {
           </Reveal>
         </div>
 
-        <div className="about-facts" aria-label="Profile facts">
+        <div className="about-facts" aria-label={t.profileFactsLabel}>
           <Reveal className="fact fact-stat" delay={0.04}>
             <Stack size={23} weight="duotone" aria-hidden="true" />
-            <strong>20+</strong>
+            <strong>8</strong>
             <span>{t.projectsStat}</span>
           </Reveal>
-          <Reveal className="fact" delay={0.1}>
-            <GraduationCap size={23} weight="duotone" aria-hidden="true" />
+          <Reveal className="fact fact-education" delay={0.1}>
+            <Image
+              className="education-logo"
+              src={universityLogo}
+              alt={t.educationLogoAlt}
+              width={58}
+              height={58}
+              sizes="58px"
+            />
             <span className="fact-label">{t.education}</span>
             <strong>{t.educationValue}</strong>
             <small>{t.educationMeta}</small>
