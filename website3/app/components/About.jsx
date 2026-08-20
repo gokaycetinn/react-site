@@ -3,7 +3,6 @@
 import {
   GraduationCap,
   MapPinLine,
-  Stack,
 } from "@phosphor-icons/react";
 import { useApp } from "./AppProvider";
 import { Reveal } from "./MotionPrimitives";
@@ -28,11 +27,6 @@ export default function About() {
         </div>
 
         <div className="about-facts" aria-label="Profile facts">
-          <Reveal className="fact fact-stat" delay={0.04}>
-            <Stack size={23} weight="duotone" aria-hidden="true" />
-            <strong>20+</strong>
-            <span>{t.projectsStat}</span>
-          </Reveal>
           <Reveal className="fact" delay={0.1}>
             <GraduationCap size={23} weight="duotone" aria-hidden="true" />
             <span className="fact-label">{t.education}</span>

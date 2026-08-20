@@ -5,7 +5,6 @@ import {
   EnvelopeSimple,
   GithubLogo,
   LinkedinLogo,
-  Phone,
 } from "@phosphor-icons/react";
 import { useApp } from "./AppProvider";
 import { MagneticLink, Reveal } from "./MotionPrimitives";
@@ -34,10 +33,6 @@ export default function Contact() {
             <EnvelopeSimple size={21} weight="duotone" aria-hidden="true" />
             <span>gokaycetin44@gmail.com</span>
           </a>
-          <a href="tel:+905356483343">
-            <Phone size={21} weight="duotone" aria-hidden="true" />
-            <span>+90 535 648 33 43</span>
-          </a>
           <a href="https://github.com/gokaycetinn" target="_blank" rel="noreferrer">
             <GithubLogo size={21} weight="fill" aria-hidden="true" />
             <span>github.com/gokaycetinn</span>
@@ -55,9 +50,6 @@ export default function Contact() {
         </Reveal>
 
         <div className="footer-bottom">
-          <a href="#home" className="footer-brand" aria-label="Back to top">
-            GÇ
-          </a>
           <p>© 2026 Gökay Çetinakdoğan. {t.rights}</p>
         </div>
       </div>

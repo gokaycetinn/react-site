@@ -3,7 +3,6 @@
 import Image from "next/image";
 import {
   MapPinLine,
-  Stack,
 } from "@phosphor-icons/react";
 import universityLogo from "../../public/logos/Çankaya_Üniversitesi_logo.png";
 import { useApp } from "./AppProvider";
@@ -30,11 +29,6 @@ export default function About() {
         </div>
 
         <div className="about-facts" aria-label={t.profileFactsLabel}>
-          <Reveal className="fact fact-stat" delay={0.04}>
-            <Stack size={23} weight="duotone" aria-hidden="true" />
-            <strong>8</strong>
-            <span>{t.projectsStat}</span>
-          </Reveal>
           <Reveal className="fact fact-education" delay={0.1}>
             <Image
               className="education-logo"
