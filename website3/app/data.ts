@@ -31,11 +31,11 @@ export const copy = {
     heroSecondary: "GitHub",
     heroVisualAlt:
       "Gökay'ın projelerini ve teknik uzmanlıklarını gösteren interaktif macOS terminal penceresi",
-    aboutTitle: "Mühendislik disiplini ve kullanıcı odaklı yaklaşım.",
+    aboutTitle: "Hakkımda",
     aboutLead:
-      "Yazılım geliştirmeyi sadece kod yazmak olarak değil; gerçek dünyadaki karmaşık problemleri yalın, sağlam ve sürdürülebilir ürünlere dönüştürme süreci olarak görüyorum.",
+      "Yazılım geliştirme ve yapay zekâ odaklı teknolojiler alanında deneyime sahip bir Bilgisayar Mühendisiyim. Deneyimim; full-stack geliştirme, mobil ve web uygulamalarının yanı sıra Bilgisayarlı Görü, Derin Öğrenme ve LLM tabanlı çözümleri kapsıyor.",
     aboutBody:
-      "Çankaya Üniversitesi Bilgisayar Mühendisliği mezunuyum. Uçtan uca sistem geliştirme süreçlerinde; yapay zekâ modelleri, veri işleme hatları ve kullanıcı odaklı modern arayüzleri entegre ediyorum. Sistemleri sadece çalıştırmakla kalmıyor; performans, sürdürülebilirlik ve temiz mimari standartlarına göre inşa ediyorum.",
+      "Karmaşık problemleri çözmekten, güvenilir ve ölçeklenebilir yazılımlar geliştirmekten ve teknik yetkinliklerimi sürekli ilerletmekten keyif alıyorum. Güçlü yazılım mühendisliği prensiplerini yeni nesil teknolojilerle birleştirerek pratik, verimli ve anlamlı dijital çözümler üretmeyi hedefliyorum.",
     projectsStat: "Öne Çıkan Proje",
     education: "Eğitim",
     educationValue: "Bilgisayar Mühendisliği",
@@ -102,11 +102,11 @@ export const copy = {
     heroSecondary: "GitHub",
     heroVisualAlt:
       "Interactive macOS terminal window showcasing Gökay's projects and technical stack",
-    aboutTitle: "Engineering rigor meets product mindset.",
+    aboutTitle: "About Me",
     aboutLead:
-      "I view software engineering not just as writing code, but as transforming real-world complexities into clean, resilient, and sustainable products.",
+      "I'm a Computer Engineer with experience in software development and AI-driven technologies. My background spans full-stack development, mobile and web applications, as well as areas such as Computer Vision, Deep Learning, and LLM-based solutions.",
     aboutBody:
-      "Computer Engineering graduate from Çankaya University. I engineer end-to-end systems by integrating AI models, distributed data processing pipelines, and modern user interfaces. Focused on performance, sustainable architectures, and clean engineering standards.",
+      "I enjoy solving complex problems, building reliable and scalable software, and continuously improving my technical skills. I aim to combine strong software engineering principles with emerging technologies to create practical, efficient, and meaningful digital solutions.",
     projectsStat: "Featured Projects",
     education: "Education",
     educationValue: "Computer Engineering (B.S.)",
